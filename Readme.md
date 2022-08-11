@@ -28,3 +28,7 @@ Laravel Framework 8.83.23
 
 
 docker exec react-spa_app_1 php app/artisan -V
+
+
+composer require laravel/ui:3.*
+npm install && npm run dev
