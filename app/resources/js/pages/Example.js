@@ -12,7 +12,7 @@ function Example() {
                     <div className="card">
                         <div className="card-header">{title}</div>
                         <div className="card-body">{text}</div>
-                        <Button color="secondary" variant="contained">Hello World</Button>
+                        <Button color="secondary" variant="contained">pages下に移動出来た</Button>
                     </div>
                 </div>
             </div>
