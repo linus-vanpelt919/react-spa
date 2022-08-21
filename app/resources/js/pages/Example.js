@@ -12,7 +12,7 @@ function Example() {
                     <div className="card">
                         <div className="card-header">{title}</div>
                         <div className="card-body">{text}</div>
-                        <Button color="secondary" variant="contained">pages下に移動出来た</Button>
+                        <Button color="secondary" variant="contained" href={`/`}>Homeに遷移ボタン</Button>
                     </div>
                 </div>
             </div>
@@ -22,6 +22,6 @@ function Example() {
 
 export default Example;
 
-if (document.getElementById("app")) {
-    ReactDOM.render(<Example />, document.getElementById("app"));
-}
+// if (document.getElementById("app")) {
+//     ReactDOM.render(<Example />, document.getElementById("app"));
+// }
