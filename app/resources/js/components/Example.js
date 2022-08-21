@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Button from "@mui/material/Button";
 
 function Example() {
     const title = "React導入";
@@ -11,6 +12,7 @@ function Example() {
                     <div className="card">
                         <div className="card-header">{title}</div>
                         <div className="card-body">{text}</div>
+                        <Button color="secondary" variant="contained">Hello World</Button>
                     </div>
                 </div>
             </div>
