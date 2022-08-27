@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import MainTable from '../components/MainTable';
@@ -42,6 +43,24 @@ let rows = [
 function Home() {
     //定義したスタイルを利用するための設定
     const classes = useStyles();
+
+    const [posts, setPosts] = useState([]);
+
+    //画面に到着したらgetPostsDataを呼ぶ 第二引数を[]にすることで、空配列が渡ってきたときのみ処理が走るようにする。
+     useEffect(() => {
+        getPostsData();
+     },[]);
+    //バックエンドからpostsの一覧を取得する処理
+    const getPostsData = () => {
+        axios.get('/api/posts')
+                .then(response => {
+                setPosts(response.data);
+            //  console.log(response.data);
+            })
+            .catch(() => {
+                console.log('通信に失敗しました');
+            });
+    }
 
     return (
         <div className="container">
