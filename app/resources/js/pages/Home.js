@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import MainTable from '../components/MainTable';
 import { Button, Card } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import PostFrom from '../components/PostFrom';
 // import { makeStyles, createStyles } from '@mui/styles';
 // import Table from '@mui/material/Table';
 // import TableBody from '@mui/material/TableBody';
@@ -32,7 +33,8 @@ function Home() {
     const classes = useStyles();
 
     const [posts, setPosts] = useState([]);
-
+    //フォームの入力値を管理するステートの定義
+    const [formData, setFormData] = useState({name:'', content:''});
     //画面に到着したらgetPostsDataを呼ぶ 第二引数を[]にすることで、空配列が渡ってきたときのみ処理が走るようにする。
      useEffect(() => {
         getPostsData();
@@ -46,6 +48,37 @@ function Home() {
             })
             .catch(() => {
                 console.log('通信に失敗しました');
+            });
+    }
+    //入力がされたら（都度）入力値を変更するためのfunction
+    const inputChange = (e) => {
+        const key = e.target.name;
+        const value = e.target.value;
+        formData[key] = value;
+        let data = Object.assign({}, formData);
+        setFormData(data);
+    }
+
+    const createPost = async() => {
+        //空だと弾く
+        if(formData == ''){
+            return;
+        }
+        //入力値を投げる
+        await axios
+            .post('/api/post/create', {
+                name: formData.name,
+                content: formData.content
+            })
+            .then((res) => {
+                //戻り値をtodosにセット
+                const tempPosts = posts
+                tempPosts.push(res.data);
+                setPosts(tempPosts)
+                setFormData('');
+            })
+            .catch(error => {
+                console.log(error);
             });
     }
     //空配列として定義する
@@ -66,6 +99,9 @@ function Home() {
                 <div className="col-md-10">
                     <div className="card">
                         <h1>タスク管理</h1>
+                        <Card className={classes.card}>
+                            <PostFrom data={formData} btnFunc={createPost} inputChange={inputChange} />
+                        </Card>
                         <Card className={classes.card}>
                             {/* テーブル部分の定義 */}
                             <MainTable headerList={headerList} rows={rows} />
