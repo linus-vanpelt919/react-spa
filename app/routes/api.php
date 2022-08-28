@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//ルーティングこの情報をもとにCRUDを実装
 Route::group(['middleware' => 'api'], function(){
     Route::get('posts', 'App\Http\Controllers\Api\PostController@index');
     Route::post('post/create', 'App\Http\Controllers\Api\PostController@create'); //追記
+    Route::post('edit', 'App\Http\Controllers\Api\PostController@edit'); //追記
+    Route::post('update', 'App\Http\Controllers\Api\PostController@update'); //追記
 });
