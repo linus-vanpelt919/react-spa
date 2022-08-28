@@ -81,6 +81,21 @@ function Home() {
                 console.log(error);
             });
     }
+    // createPostの下に記載
+    const deletePost = async (post) => {
+        await axios
+            .post('/api/delete', {
+            id: post.id
+        })
+        .then((res) => {
+            this.setState({
+                posts: res.posts
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
     //空配列として定義する
     let rows = [];
     //postsの要素ごとにrowsで使える形式に変換する
@@ -89,7 +104,7 @@ function Home() {
             name: post.name,
             content: post.content,
             editBtn: <Button color="secondary" variant="contained" key={post.id} href={`/post/edit/${post.id}`}>編集</Button>,
-            deleteBtn: <Button color="primary" variant="contained">完了</Button>,
+            deleteBtn: <Button color="primary" variant="contained" href="/" onClick={() => deletePost(post)}>完了</Button>,
         })
     );
 

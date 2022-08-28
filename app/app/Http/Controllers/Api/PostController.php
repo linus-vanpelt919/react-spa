@@ -40,4 +40,12 @@ class PostController extends Controller
        $posts = Post::all();
        return $posts;
    }
+   //データを削除するためのアクション
+   public function delete(Request $request)
+    {
+        $post =  Post::find($request->id);
+        $post->delete();
+        $posts = Post::all();
+        return $posts;
+    }
 }
