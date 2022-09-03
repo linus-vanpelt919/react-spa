@@ -15,6 +15,7 @@ function App() {
                 <Route path="/" exact element={<Home />} />
                 <Route path='/post/edit/:id' exact element={<PostEdit />} />
                 <Route path='/login/' exact element={<Login />} />
+                <Route path='/Register/' exact element={<Register />} />
             </Routes>
         </div>
     );
