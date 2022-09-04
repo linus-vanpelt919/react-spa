@@ -8,7 +8,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PostBlog from "./pages/PostBlog";
 import ArticleList from "./pages/ArticleList";
-import Header from "./pages/Header";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 function App() {
     return (
         <div>
@@ -29,6 +30,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Header />
         <App />
+        <Footer />
     </BrowserRouter>,
     document.getElementById("app")
 );

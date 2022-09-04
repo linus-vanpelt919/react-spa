@@ -29,7 +29,7 @@ function Register() {
     };
 
     return (
-        <div className="max-w-2xl	mx-auto mt-40">
+        <div className="max-w-2xl mx-auto mt-40 mb-40">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-6">
                     <label

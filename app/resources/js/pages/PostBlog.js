@@ -13,6 +13,7 @@ function PostBlog() {
         reValidateMode: "onSubmit", //二回目のバリデーションのタイミング
         criteriaMode: "all", //すべてのエラーを出す初期値はfirstError
     });
+    //画像プレビュ機能
     const handleFile = (e) => {
         const file = e.target.files[0];
         const fileReader = new FileReader();
@@ -39,7 +40,7 @@ function PostBlog() {
             });
     };
     return (
-        <div className="max-w-2xl mx-auto mt-40">
+        <div className="max-w-2xl mx-auto mt-40 mb-40">
             <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">
                 記事の入力
             </h1>

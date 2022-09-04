@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Article() {
     return (
         <>
-            <div className="px-8 mx-auto mt-32 max-w-5xl">
+            <div className="px-8 mx-auto mt-32 max-w-5xl mb-32">
                 <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400 mt-10">
                     記事一覧
                 </h1>
