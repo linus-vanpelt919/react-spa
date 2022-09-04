@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 function PostBlog() {
-    const [file, setFile] = useState('');
+    const [file, setFile] = useState("");
     const {
         register,
         handleSubmit,
@@ -14,8 +14,15 @@ function PostBlog() {
         criteriaMode: "all", //すべてのエラーを出す初期値はfirstError
     });
     const handleFile = (e) => {
-        console.log(e.target.files);
-    }
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        console.log("fileReader", fileReader);
+        fileReader.onload = function () {
+            console.log("result", fileReader.result);
+            setFile(fileReader.result);
+        };
+        fileReader.readAsDataURL(file);
+    };
     const onSubmit = async (data) => {
         console.log(data);
         const { name, email, password } = data;
@@ -33,7 +40,9 @@ function PostBlog() {
     };
     return (
         <div className="max-w-2xl mx-auto mt-40">
-            <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">記事の入力</h1>
+            <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">
+                記事の入力
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-6">
                     <label
@@ -80,7 +89,7 @@ function PostBlog() {
                     ></textarea>
                 </div>
                 <div className="mb-6">
-                    <div className="flex justify-center items-center w-80 mx-auto relative">
+                    <div className="flex justify-center items-center w-80 mx-auto">
                         <label
                             htmlFor="dropzone-file"
                             className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -116,14 +125,18 @@ function PostBlog() {
                                 type="file"
                                 className="hidden"
                                 onChange={handleFile}
-                                value={file}
                             />
-                            {file &&
-                            <div className="absolute mx-auto w-full h-full">
-                                <img className="w-full h-full object-contain" src={file} />
-                            </div>
-                            }
                         </label>
+                    </div>
+                    <div>
+                        {file && (
+                            <div className="mx-auto w-80 mt-2">
+                                <img
+                                    className="w-full h-full object-contain"
+                                    src={file}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <button

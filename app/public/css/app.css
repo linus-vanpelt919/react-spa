@@ -581,6 +581,12 @@ video {
 .mt-10 {
   margin-top: 2.5rem;
 }
+.mt-32 {
+  margin-top: 8rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
 .block {
   display: block;
 }
@@ -631,6 +637,9 @@ video {
 }
 .max-w-sm {
   max-width: 24rem;
+}
+.max-w-5xl {
+  max-width: 64rem;
 }
 .cursor-pointer {
   cursor: pointer;
