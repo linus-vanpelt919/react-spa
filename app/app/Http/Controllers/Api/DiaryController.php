@@ -19,18 +19,19 @@ class DiaryController extends Controller
    //ブログ作成
    public function create(Request $request)
    {
-       $file = $request->filename;
-    //    dd($request->file('filename'));
        $post = new Diary;
        $post->user_id = 1;
        $post->title = $request->title;
        $post->contents = $request->contents;
-       $filepath = $request->file('filename')->store('');
-    //    $filepath = $request->file('filename')->store('public/uploads/'. date("YmdHis") . $file);
-       $post->filename = basename($filepath);
+       if($request->file('filename')) {
+          $filepath = $request->file('filename')->store('public/');
+       // $filepath = $request->file('filename')->store('public/uploads/'. date("YmdHis") . $file);
+          $post->filename = basename($filepath);
+       }
        $post->save();
        return response()->json($post, 200);
    }
+
 //    // 編集画面に遷移するためのアクション
 //    public function edit(Request $request)
 //    {

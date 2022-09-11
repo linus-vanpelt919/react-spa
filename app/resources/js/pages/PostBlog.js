@@ -9,6 +9,7 @@ function PostBlog() {
         register,
         handleSubmit,
         formState: { errors },
+        reset
     } = useForm({
         mode: "onBlur", //入力を外すとエラーになる
         reValidateMode: "onSubmit", //二回目のバリデーションのタイミング
@@ -25,13 +26,11 @@ function PostBlog() {
         };
         fileReader.readAsDataURL(fileName);
         const file = inputRef.current.files[0];
-        console.log("れふfile", file);
         setUploadFile(inputRef.current.files[0]);
     };
     const onSubmit = async (data) => {
         //https://chaika.hatenablog.com/entry/2020/08/07/160000
         const { title, contents } = data;
-        console.log("uploadFile", uploadFile);
         const file = new FormData();
         file.append("title", title);
         file.append("contents", contents);
@@ -45,10 +44,12 @@ function PostBlog() {
                 },
             })
             .then((res) => {
-                console.log(res);
                 setFile("");
+                reset();
+                //フラッシュメッセージ表示
             })
             .catch((error) => {
+                //エラーメッセージ表示
                 console.log(error);
             });
     };

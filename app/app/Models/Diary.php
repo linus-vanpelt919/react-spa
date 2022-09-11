@@ -12,7 +12,7 @@ class Diary extends Model
     protected $fillable = [
         'title',
         'contents',
-        'icon',
+        'filename',
     ];
 
     //1対多のリレーション追加

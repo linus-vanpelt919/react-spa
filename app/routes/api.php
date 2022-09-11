@@ -27,4 +27,5 @@ Route::group(['middleware' => 'api'], function(){
     Route::post('delete', 'App\Http\Controllers\Api\PostController@delete');
     Route::post('register', 'App\Http\Controllers\Api\UserController@register');
     Route::post('diary/create', 'App\Http\Controllers\Api\DiaryController@create');
+    Route::get('diary/index', 'App\Http\Controllers\Api\DiaryController@index');
 });

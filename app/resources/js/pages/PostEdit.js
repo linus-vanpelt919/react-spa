@@ -18,7 +18,7 @@ function PostEdit(props) {
     const classes = useStyles();
     const {id} = useParams();
 
-    console.log('id',id);
+    // console.log('id',id);
     // const params = props.match.params;
     const [editData, setEditData] = useState({ name: "", content: "" });
 
