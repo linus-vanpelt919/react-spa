@@ -28,4 +28,6 @@ Route::group(['middleware' => 'api'], function(){
     Route::post('register', 'App\Http\Controllers\Api\UserController@register');
     Route::post('diary/create', 'App\Http\Controllers\Api\DiaryController@create');
     Route::get('diary/index', 'App\Http\Controllers\Api\DiaryController@index');
+    Route::get('diary/detail/{id}', 'App\Http\Controllers\Api\DiaryController@detail');
+    Route::post('diary/detail/{id}', 'App\Http\Controllers\Api\DiaryController@update');
 });
