@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 function PostBlog() {
     const [file, setFile] = useState("");
+    const [uploadFile, setUploadFile] = useState("");
     const {
         register,
         handleSubmit,
@@ -13,28 +14,40 @@ function PostBlog() {
         reValidateMode: "onSubmit", //二回目のバリデーションのタイミング
         criteriaMode: "all", //すべてのエラーを出す初期値はfirstError
     });
+    // const { filename } = register("filename");
+    const inputRef = useRef(null);
     //画像プレビュ機能
     const handleFile = (e) => {
-        const file = e.target.files[0];
+        const fileName = e.target.files[0];
         const fileReader = new FileReader();
-        console.log("fileReader", fileReader);
         fileReader.onload = function () {
-            console.log("result", fileReader.result);
             setFile(fileReader.result);
         };
-        fileReader.readAsDataURL(file);
+        fileReader.readAsDataURL(fileName);
+        const file = inputRef.current.files[0];
+        console.log("れふfile", file);
+        setUploadFile(inputRef.current.files[0]);
     };
     const onSubmit = async (data) => {
-        console.log(data);
-        const { name, email, password } = data;
-        console.log(name);
+        //https://chaika.hatenablog.com/entry/2020/08/07/160000
+        const { title, contents } = data;
+        console.log("uploadFile", uploadFile);
+        const file = new FormData();
+        file.append("title", title);
+        file.append("contents", contents);
+        //appendしないと空になる
+        file.append("filename", uploadFile);
+
         await axios
-            .post("/api/register", {
-                name: name,
-                email: email,
-                password: password,
+            .post("/api/diary/create", file, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             })
-            .then((res) => {})
+            .then((res) => {
+                console.log(res);
+                setFile("");
+            })
             .catch((error) => {
                 console.log(error);
             });
@@ -44,7 +57,10 @@ function PostBlog() {
             <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">
                 記事の入力
             </h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                encType="multipart/form-data"
+            >
                 <div className="mb-6">
                     <label
                         htmlFor="name"
@@ -58,20 +74,16 @@ function PostBlog() {
                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="タイトル"
                         // required
-                        {...register("name", {
-                            // required: {
-                            //     value: true,
-                            //     message: "入力が必須の項目です。",
-                            // },
-                            // maxLength: {
-                            //     value: 20,
-                            //     message: "20文字以上入力してください。",
-                            // },
+                        {...register("title", {
+                            required: {
+                                value: true,
+                                message: "入力が必須の項目です。",
+                            },
                         })}
                     />
-                    {errors.name?.message && (
+                    {errors.title?.message && (
                         <div className="mt-1 text-red-500">
-                            {errors.name.message}
+                            {errors.title.message}
                         </div>
                     )}
                 </div>
@@ -87,7 +99,22 @@ function PostBlog() {
                         rows="10"
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="今日あったこと..."
+                        {...register("contents",{
+                            required: {
+                                value: true,
+                                message: "入力が必須の項目です。",
+                            },
+                            maxLength: {
+                                value: 500,
+                                message: "５００文字以内で入力してください",
+                            }
+                        })}
                     ></textarea>
+                    {errors.contents?.message && (
+                        <div className="mt-1 text-red-500">
+                            {errors.contents.message}
+                        </div>
+                    )}
                 </div>
                 <div className="mb-6">
                     <div className="flex justify-center items-center w-80 mx-auto">
@@ -124,8 +151,11 @@ function PostBlog() {
                             <input
                                 id="dropzone-file"
                                 type="file"
+                                ref={inputRef}
                                 className="hidden"
+                                accept="image/*"
                                 onChange={handleFile}
+                                // name={filename}
                             />
                         </label>
                     </div>
@@ -142,7 +172,6 @@ function PostBlog() {
                 </div>
                 <button
                     type="submit"
-                    accept="image/*"
                     className="block ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                     記事を投稿する

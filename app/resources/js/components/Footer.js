@@ -27,7 +27,7 @@ function Footer() {
             </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link to="/" className="hover:underline">Flowbite™</Link>. All Rights Reserved.
+        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link to="/" className="hover:underline">Diary</Link>. All Rights Reserved.
         </span>
     </footer>
     );

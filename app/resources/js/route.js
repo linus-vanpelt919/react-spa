@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PostBlog from "./pages/PostBlog";
 import ArticleList from "./pages/ArticleList";
+import ArticleDetail from "./pages/ArticleDetail";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/register/" exact element={<Register />} />
                 <Route path="/blog/" exact element={<PostBlog />} />
                 <Route path="/article/" exact element={<ArticleList />} />
+                <Route path="/article/:id" exact element={<ArticleDetail />} />
             </Routes>
         </div>
     );
