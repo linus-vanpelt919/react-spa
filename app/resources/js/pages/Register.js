@@ -13,9 +13,7 @@ function Register() {
         criteriaMode: "all", //すべてのエラーを出す初期値はfirstError
     });
     const onSubmit = async (data) => {
-        console.log(data);
         const { name, email, password } = data;
-        console.log(name);
         await axios
             .post("/api/register", {
                 name: name,

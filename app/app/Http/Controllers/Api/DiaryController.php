@@ -44,21 +44,25 @@ class DiaryController extends Controller
    //     return $post;
    // }
    //データを更新するためのアクション
-   public function update(Request $request)
+   public function update(Request $request,$id)
    {
-       $post = Diary::find($request->id);
-       $post->name = $request->name;
-       $post->content = $request->content;
+       $post = Diary::find($id);
+       $post->title = $request->title;
+       $post->contents = $request->contents;
+       if($request->file('filename')) {
+         $filepath = $request->file('filename')->store('public/');
+         $post->filename = basename($filepath);
+      }
        $post->save();
        $posts = Diary::all();
        return $posts;
    }
-//    //データを削除するためのアクション
-//    public function delete(Request $request)
-//     {
-//         $post =  Post::find($request->id);
-//         $post->delete();
-//         $posts = Post::all();
-//         return $posts;
-//     }
+   //データを削除するためのアクション
+   public function delete(Request $request)
+    {
+        $post =  Diary::find($request->id);
+        $post->delete();
+        $posts = Diary::all();
+        return $posts;
+    }
 }

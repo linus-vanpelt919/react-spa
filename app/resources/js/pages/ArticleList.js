@@ -9,7 +9,6 @@ function Article() {
             .get("/api/diary/index")
             .then((response) => {
                 setDiary(response.data);
-                console.log("diary", response.data);
             })
             .catch(() => {
                 console.log("通信に失敗しました");
