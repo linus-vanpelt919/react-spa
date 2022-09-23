@@ -24255,6 +24255,42 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
+/***/ "./node_modules/attr-accept/dist/es/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/attr-accept/dist/es/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+exports["default"] = function (file, acceptedFiles) {
+  if (file && acceptedFiles) {
+    var acceptedFilesArray = Array.isArray(acceptedFiles) ? acceptedFiles : acceptedFiles.split(',');
+    var fileName = file.name || '';
+    var mimeType = (file.type || '').toLowerCase();
+    var baseMimeType = mimeType.replace(/\/.*$/, '');
+    return acceptedFilesArray.some(function (type) {
+      var validType = type.trim().toLowerCase();
+
+      if (validType.charAt(0) === '.') {
+        return fileName.toLowerCase().endsWith(validType);
+      } else if (validType.endsWith('/*')) {
+        // This is something like a image/* mime type
+        return baseMimeType === validType.replace(/\/.*$/, '');
+      }
+
+      return mimeType === validType;
+    });
+  }
+
+  return true;
+};
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -26695,8 +26731,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-paginate */ "./node_modules/react-paginate/dist/react-paginate.js");
+/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_paginate__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -26708,6 +26746,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -26734,49 +26773,49 @@ function Article() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getDiaryData();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "px-8 mx-auto mt-32 max-w-5xl mb-32",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
         className: "text-center text-4xl font-mono text-gray-900 dark:text-gray-400 mt-10",
         children: "\u8A18\u4E8B\u4E00\u89A7"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("article", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("article", {
         className: "grid grid-cols-3 gap-4 mt-5",
         children: diary.map(function (item) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
               to: "/article/" + item.id,
-              children: item.filename ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              children: item.filename ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                 className: "rounded-t-lg w-full object-cover h-64",
                 src: "/storage/" + item.filename,
                 alt: item.title
-              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                 className: "rounded-t-lg  w-full object-cover h-64",
                 src: "/img/image-1.jpg",
                 alt: "\u30C0\u30DF\u30FC\u753B\u50CF"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "p-5",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                 to: "/article/" + item.id,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
                   className: "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white",
                   children: item.title
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                 className: "mb-3 font-normal text-gray-700 dark:text-gray-400",
                 children: item.contents
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                 to: "/article/" + item.id,
                 className: "inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
-                children: ["Read more", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
+                children: ["Read more", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("svg", {
                   "aria-hidden": "true",
                   className: "ml-2 -mr-1 w-4 h-4",
                   fill: "currentColor",
                   viewBox: "0 0 20 20",
                   xmlns: "http://www.w3.org/2000/svg",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
                     fillRule: "evenodd",
                     d: "M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z",
                     clipRule: "evenodd"
@@ -27443,6 +27482,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dropzone */ "./node_modules/react-dropzone/dist/es/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -27476,6 +27516,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function PostBlog() {
   var _errors$title, _errors$contents;
 
@@ -27501,22 +27542,19 @@ function PostBlog() {
       handleSubmit = _useForm.handleSubmit,
       errors = _useForm.formState.errors,
       reset = _useForm.reset; // const { filename } = register("filename");
+  // const inputRef = useRef(null);
+  //画像プレビュ機能
+  // const handleFile = (e) => {
+  //     const fileName = e.target.files[0];
+  //     const fileReader = new FileReader();
+  //     fileReader.onload = function () {
+  //         setFile(fileReader.result);
+  //     };
+  //     fileReader.readAsDataURL(fileName);
+  //     const file = inputRef.current.files[0];
+  //     setUploadFile(inputRef.current.files[0]);
+  // };
 
-
-  var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null); //画像プレビュ機能
-
-  var handleFile = function handleFile(e) {
-    var fileName = e.target.files[0];
-    var fileReader = new FileReader();
-
-    fileReader.onload = function () {
-      setFile(fileReader.result);
-    };
-
-    fileReader.readAsDataURL(fileName);
-    var file = inputRef.current.files[0];
-    setUploadFile(inputRef.current.files[0]);
-  };
 
   var onSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
@@ -27538,7 +27576,8 @@ function PostBlog() {
                   "Content-Type": "multipart/form-data"
                 }
               }).then(function (res) {
-                setFile("");
+                // setFile("");
+                setFiles([]);
                 reset(); //フラッシュメッセージ表示
               })["catch"](function (error) {
                 //エラーメッセージ表示
@@ -27556,8 +27595,51 @@ function PostBlog() {
     return function onSubmit(_x) {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); //ドラドロ
 
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      files = _useState6[0],
+      setFiles = _useState6[1];
+
+  var _useDropzone = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_4__.useDropzone)({
+    accept: {
+      "image/*": []
+    },
+    onDrop: function onDrop(acceptedFiles) {
+      setFiles(acceptedFiles.map(function (file) {
+        return Object.assign(file, {
+          preview: URL.createObjectURL(file)
+        });
+      }));
+      setUploadFile(acceptedFiles[0]);
+    }
+  }),
+      getRootProps = _useDropzone.getRootProps,
+      getInputProps = _useDropzone.getInputProps;
+
+  var thumbs = files.map(function (file) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+          src: file.preview // Revoke data uri after image is loaded
+          ,
+          onLoad: function onLoad() {
+            URL.revokeObjectURL(file.preview);
+          }
+        })
+      })
+    }, file.name);
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return function () {
+      return files.forEach(function (file) {
+        return URL.revokeObjectURL(file.preview);
+      });
+    };
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "max-w-2xl mx-auto mt-40 mb-40",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
@@ -27614,7 +27696,7 @@ function PostBlog() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "mb-6",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "flex justify-center items-center w-80 mx-auto",
+          className: "flex justify-center items-center w-80 mx-auto relative",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
             htmlFor: "dropzone-file",
             className: "flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600",
@@ -27643,22 +27725,17 @@ function PostBlog() {
                 className: "text-xs text-gray-500 dark:text-gray-400",
                 children: "SVG, PNG, JPG or GIF (MAX. 800x400px)"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              id: "dropzone-file",
-              type: "file",
-              ref: inputRef,
-              className: "hidden",
-              accept: "image/*",
-              onChange: handleFile // name={filename}
-
-            })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", _objectSpread(_objectSpread({}, getRootProps({
+              className: "dropzone absolute top-0 left-0 w-full h-full opacity-0 pointer"
+            })), {}, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", _objectSpread({}, getInputProps()))
+            }))]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          children: file && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: files && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "mx-auto w-80 mt-2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              className: "w-full h-full object-contain",
-              src: file
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("aside", {
+              children: thumbs
             })
           })
         })]
@@ -33346,6 +33423,372 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e))for(t=0;t<e.length;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);else for(t in e)e[t]&&(n&&(n+=" "),n+=t);return n}function clsx(){for(var e,t,f=0,n="";f<arguments.length;)(e=arguments[f++])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
+
+/***/ }),
+
+/***/ "./node_modules/file-selector/dist/es5/file-selector.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/file-selector/dist/es5/file-selector.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fromEvent": () => (/* binding */ fromEvent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./file */ "./node_modules/file-selector/dist/es5/file.js");
+
+
+var FILES_TO_IGNORE = [
+    // Thumbnail cache files for macOS and Windows
+    '.DS_Store',
+    'Thumbs.db' // Windows
+];
+/**
+ * Convert a DragEvent's DataTrasfer object to a list of File objects
+ * NOTE: If some of the items are folders,
+ * everything will be flattened and placed in the same list but the paths will be kept as a {path} property.
+ *
+ * EXPERIMENTAL: A list of https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle objects can also be passed as an arg
+ * and a list of File objects will be returned.
+ *
+ * @param evt
+ */
+function fromEvent(evt) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+            if (isObject(evt) && isDataTransfer(evt.dataTransfer)) {
+                return [2 /*return*/, getDataTransferFiles(evt.dataTransfer, evt.type)];
+            }
+            else if (isChangeEvt(evt)) {
+                return [2 /*return*/, getInputFiles(evt)];
+            }
+            else if (Array.isArray(evt) && evt.every(function (item) { return 'getFile' in item && typeof item.getFile === 'function'; })) {
+                return [2 /*return*/, getFsHandleFiles(evt)];
+            }
+            return [2 /*return*/, []];
+        });
+    });
+}
+function isDataTransfer(value) {
+    return isObject(value);
+}
+function isChangeEvt(value) {
+    return isObject(value) && isObject(value.target);
+}
+function isObject(v) {
+    return typeof v === 'object' && v !== null;
+}
+function getInputFiles(evt) {
+    return fromList(evt.target.files).map(function (file) { return (0,_file__WEBPACK_IMPORTED_MODULE_0__.toFileWithPath)(file); });
+}
+// Ee expect each handle to be https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle
+function getFsHandleFiles(handles) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function () {
+        var files;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, Promise.all(handles.map(function (h) { return h.getFile(); }))];
+                case 1:
+                    files = _a.sent();
+                    return [2 /*return*/, files.map(function (file) { return (0,_file__WEBPACK_IMPORTED_MODULE_0__.toFileWithPath)(file); })];
+            }
+        });
+    });
+}
+function getDataTransferFiles(dt, type) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function () {
+        var items, files;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!dt.items) return [3 /*break*/, 2];
+                    items = fromList(dt.items)
+                        .filter(function (item) { return item.kind === 'file'; });
+                    // According to https://html.spec.whatwg.org/multipage/dnd.html#dndevents,
+                    // only 'dragstart' and 'drop' has access to the data (source node)
+                    if (type !== 'drop') {
+                        return [2 /*return*/, items];
+                    }
+                    return [4 /*yield*/, Promise.all(items.map(toFilePromises))];
+                case 1:
+                    files = _a.sent();
+                    return [2 /*return*/, noIgnoredFiles(flatten(files))];
+                case 2: return [2 /*return*/, noIgnoredFiles(fromList(dt.files)
+                        .map(function (file) { return (0,_file__WEBPACK_IMPORTED_MODULE_0__.toFileWithPath)(file); }))];
+            }
+        });
+    });
+}
+function noIgnoredFiles(files) {
+    return files.filter(function (file) { return FILES_TO_IGNORE.indexOf(file.name) === -1; });
+}
+// IE11 does not support Array.from()
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from#Browser_compatibility
+// https://developer.mozilla.org/en-US/docs/Web/API/FileList
+// https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList
+function fromList(items) {
+    if (items === null) {
+        return [];
+    }
+    var files = [];
+    // tslint:disable: prefer-for-of
+    for (var i = 0; i < items.length; i++) {
+        var file = items[i];
+        files.push(file);
+    }
+    return files;
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem
+function toFilePromises(item) {
+    if (typeof item.webkitGetAsEntry !== 'function') {
+        return fromDataTransferItem(item);
+    }
+    var entry = item.webkitGetAsEntry();
+    // Safari supports dropping an image node from a different window and can be retrieved using
+    // the DataTransferItem.getAsFile() API
+    // NOTE: FileSystemEntry.file() throws if trying to get the file
+    if (entry && entry.isDirectory) {
+        return fromDirEntry(entry);
+    }
+    return fromDataTransferItem(item);
+}
+function flatten(items) {
+    return items.reduce(function (acc, files) { return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__spreadArray)((0,tslib__WEBPACK_IMPORTED_MODULE_1__.__spreadArray)([], (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__read)(acc), false), (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__read)((Array.isArray(files) ? flatten(files) : [files])), false); }, []);
+}
+function fromDataTransferItem(item) {
+    var file = item.getAsFile();
+    if (!file) {
+        return Promise.reject("".concat(item, " is not a File"));
+    }
+    var fwp = (0,_file__WEBPACK_IMPORTED_MODULE_0__.toFileWithPath)(file);
+    return Promise.resolve(fwp);
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry
+function fromEntry(entry) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+            return [2 /*return*/, entry.isDirectory ? fromDirEntry(entry) : fromFileEntry(entry)];
+        });
+    });
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry
+function fromDirEntry(entry) {
+    var reader = entry.createReader();
+    return new Promise(function (resolve, reject) {
+        var entries = [];
+        function readEntries() {
+            var _this = this;
+            // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/createReader
+            // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries
+            reader.readEntries(function (batch) { return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(_this, void 0, void 0, function () {
+                var files, err_1, items;
+                return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            if (!!batch.length) return [3 /*break*/, 5];
+                            _a.label = 1;
+                        case 1:
+                            _a.trys.push([1, 3, , 4]);
+                            return [4 /*yield*/, Promise.all(entries)];
+                        case 2:
+                            files = _a.sent();
+                            resolve(files);
+                            return [3 /*break*/, 4];
+                        case 3:
+                            err_1 = _a.sent();
+                            reject(err_1);
+                            return [3 /*break*/, 4];
+                        case 4: return [3 /*break*/, 6];
+                        case 5:
+                            items = Promise.all(batch.map(fromEntry));
+                            entries.push(items);
+                            // Continue reading
+                            readEntries();
+                            _a.label = 6;
+                        case 6: return [2 /*return*/];
+                    }
+                });
+            }); }, function (err) {
+                reject(err);
+            });
+        }
+        readEntries();
+    });
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry
+function fromFileEntry(entry) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__generator)(this, function (_a) {
+            return [2 /*return*/, new Promise(function (resolve, reject) {
+                    entry.file(function (file) {
+                        var fwp = (0,_file__WEBPACK_IMPORTED_MODULE_0__.toFileWithPath)(file, entry.fullPath);
+                        resolve(fwp);
+                    }, function (err) {
+                        reject(err);
+                    });
+                })];
+        });
+    });
+}
+//# sourceMappingURL=file-selector.js.map
+
+/***/ }),
+
+/***/ "./node_modules/file-selector/dist/es5/file.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/file-selector/dist/es5/file.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "COMMON_MIME_TYPES": () => (/* binding */ COMMON_MIME_TYPES),
+/* harmony export */   "toFileWithPath": () => (/* binding */ toFileWithPath)
+/* harmony export */ });
+var COMMON_MIME_TYPES = new Map([
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+    ['aac', 'audio/aac'],
+    ['abw', 'application/x-abiword'],
+    ['arc', 'application/x-freearc'],
+    ['avif', 'image/avif'],
+    ['avi', 'video/x-msvideo'],
+    ['azw', 'application/vnd.amazon.ebook'],
+    ['bin', 'application/octet-stream'],
+    ['bmp', 'image/bmp'],
+    ['bz', 'application/x-bzip'],
+    ['bz2', 'application/x-bzip2'],
+    ['cda', 'application/x-cdf'],
+    ['csh', 'application/x-csh'],
+    ['css', 'text/css'],
+    ['csv', 'text/csv'],
+    ['doc', 'application/msword'],
+    ['docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    ['eot', 'application/vnd.ms-fontobject'],
+    ['epub', 'application/epub+zip'],
+    ['gz', 'application/gzip'],
+    ['gif', 'image/gif'],
+    ['heic', 'image/heic'],
+    ['heif', 'image/heif'],
+    ['htm', 'text/html'],
+    ['html', 'text/html'],
+    ['ico', 'image/vnd.microsoft.icon'],
+    ['ics', 'text/calendar'],
+    ['jar', 'application/java-archive'],
+    ['jpeg', 'image/jpeg'],
+    ['jpg', 'image/jpeg'],
+    ['js', 'text/javascript'],
+    ['json', 'application/json'],
+    ['jsonld', 'application/ld+json'],
+    ['mid', 'audio/midi'],
+    ['midi', 'audio/midi'],
+    ['mjs', 'text/javascript'],
+    ['mp3', 'audio/mpeg'],
+    ['mp4', 'video/mp4'],
+    ['mpeg', 'video/mpeg'],
+    ['mpkg', 'application/vnd.apple.installer+xml'],
+    ['odp', 'application/vnd.oasis.opendocument.presentation'],
+    ['ods', 'application/vnd.oasis.opendocument.spreadsheet'],
+    ['odt', 'application/vnd.oasis.opendocument.text'],
+    ['oga', 'audio/ogg'],
+    ['ogv', 'video/ogg'],
+    ['ogx', 'application/ogg'],
+    ['opus', 'audio/opus'],
+    ['otf', 'font/otf'],
+    ['png', 'image/png'],
+    ['pdf', 'application/pdf'],
+    ['php', 'application/x-httpd-php'],
+    ['ppt', 'application/vnd.ms-powerpoint'],
+    ['pptx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
+    ['rar', 'application/vnd.rar'],
+    ['rtf', 'application/rtf'],
+    ['sh', 'application/x-sh'],
+    ['svg', 'image/svg+xml'],
+    ['swf', 'application/x-shockwave-flash'],
+    ['tar', 'application/x-tar'],
+    ['tif', 'image/tiff'],
+    ['tiff', 'image/tiff'],
+    ['ts', 'video/mp2t'],
+    ['ttf', 'font/ttf'],
+    ['txt', 'text/plain'],
+    ['vsd', 'application/vnd.visio'],
+    ['wav', 'audio/wav'],
+    ['weba', 'audio/webm'],
+    ['webm', 'video/webm'],
+    ['webp', 'image/webp'],
+    ['woff', 'font/woff'],
+    ['woff2', 'font/woff2'],
+    ['xhtml', 'application/xhtml+xml'],
+    ['xls', 'application/vnd.ms-excel'],
+    ['xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    ['xml', 'application/xml'],
+    ['xul', 'application/vnd.mozilla.xul+xml'],
+    ['zip', 'application/zip'],
+    ['7z', 'application/x-7z-compressed'],
+    // Others
+    ['mkv', 'video/x-matroska'],
+    ['mov', 'video/quicktime'],
+    ['msg', 'application/vnd.ms-outlook']
+]);
+function toFileWithPath(file, path) {
+    var f = withMimeType(file);
+    if (typeof f.path !== 'string') { // on electron, path is already set to the absolute path
+        var webkitRelativePath = file.webkitRelativePath;
+        Object.defineProperty(f, 'path', {
+            value: typeof path === 'string'
+                ? path
+                // If <input webkitdirectory> is set,
+                // the File will have a {webkitRelativePath} property
+                // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory
+                : typeof webkitRelativePath === 'string' && webkitRelativePath.length > 0
+                    ? webkitRelativePath
+                    : file.name,
+            writable: false,
+            configurable: false,
+            enumerable: true
+        });
+    }
+    return f;
+}
+function withMimeType(file) {
+    var name = file.name;
+    var hasExtension = name && name.lastIndexOf('.') !== -1;
+    if (hasExtension && !file.type) {
+        var ext = name.split('.')
+            .pop().toLowerCase();
+        var type = COMMON_MIME_TYPES.get(ext);
+        if (type) {
+            Object.defineProperty(file, 'type', {
+                value: type,
+                writable: false,
+                configurable: false,
+                enumerable: true
+            });
+        }
+    }
+    return file;
+}
+//# sourceMappingURL=file.js.map
+
+/***/ }),
+
+/***/ "./node_modules/file-selector/dist/es5/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/file-selector/dist/es5/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fromEvent": () => (/* reexport safe */ _file_selector__WEBPACK_IMPORTED_MODULE_0__.fromEvent)
+/* harmony export */ });
+/* harmony import */ var _file_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./file-selector */ "./node_modules/file-selector/dist/es5/file-selector.js");
+
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -78905,6 +79348,1363 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-dropzone/dist/es/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-dropzone/dist/es/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ErrorCode": () => (/* reexport safe */ _utils_index__WEBPACK_IMPORTED_MODULE_3__.ErrorCode),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "useDropzone": () => (/* binding */ useDropzone)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var file_selector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! file-selector */ "./node_modules/file-selector/dist/es5/index.js");
+/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./node_modules/react-dropzone/dist/es/utils/index.js");
+var _excluded = ["children"],
+    _excluded2 = ["open"],
+    _excluded3 = ["refKey", "role", "onKeyDown", "onFocus", "onBlur", "onClick", "onDragEnter", "onDragOver", "onDragLeave", "onDrop"],
+    _excluded4 = ["refKey", "onChange", "onClick"];
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/* eslint prefer-template: 0 */
+
+
+
+
+/**
+ * Convenience wrapper component for the `useDropzone` hook
+ *
+ * ```jsx
+ * <Dropzone>
+ *   {({getRootProps, getInputProps}) => (
+ *     <div {...getRootProps()}>
+ *       <input {...getInputProps()} />
+ *       <p>Drag 'n' drop some files here, or click to select files</p>
+ *     </div>
+ *   )}
+ * </Dropzone>
+ * ```
+ */
+
+var Dropzone = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var children = _ref.children,
+      params = _objectWithoutProperties(_ref, _excluded);
+
+  var _useDropzone = useDropzone(params),
+      open = _useDropzone.open,
+      props = _objectWithoutProperties(_useDropzone, _excluded2);
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useImperativeHandle)(ref, function () {
+    return {
+      open: open
+    };
+  }, [open]); // TODO: Figure out why react-styleguidist cannot create docs if we don't return a jsx element
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children(_objectSpread(_objectSpread({}, props), {}, {
+    open: open
+  })));
+});
+Dropzone.displayName = "Dropzone"; // Add default props for react-docgen
+
+var defaultProps = {
+  disabled: false,
+  getFilesFromEvent: file_selector__WEBPACK_IMPORTED_MODULE_1__.fromEvent,
+  maxSize: Infinity,
+  minSize: 0,
+  multiple: true,
+  maxFiles: 0,
+  preventDropOnDocument: true,
+  noClick: false,
+  noKeyboard: false,
+  noDrag: false,
+  noDragEventsBubbling: false,
+  validator: null,
+  useFsAccessApi: true,
+  autoFocus: false
+};
+Dropzone.defaultProps = defaultProps;
+Dropzone.propTypes = {
+  /**
+   * Render function that exposes the dropzone state and prop getter fns
+   *
+   * @param {object} params
+   * @param {Function} params.getRootProps Returns the props you should apply to the root drop container you render
+   * @param {Function} params.getInputProps Returns the props you should apply to hidden file input you render
+   * @param {Function} params.open Open the native file selection dialog
+   * @param {boolean} params.isFocused Dropzone area is in focus
+   * @param {boolean} params.isFileDialogActive File dialog is opened
+   * @param {boolean} params.isDragActive Active drag is in progress
+   * @param {boolean} params.isDragAccept Dragged files are accepted
+   * @param {boolean} params.isDragReject Some dragged files are rejected
+   * @param {File[]} params.acceptedFiles Accepted files
+   * @param {FileRejection[]} params.fileRejections Rejected files and why they were rejected
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Set accepted file types.
+   * Checkout https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker types option for more information.
+   * Keep in mind that mime type determination is not reliable across platforms. CSV files,
+   * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
+   * Windows. In some cases there might not be a mime type set at all (https://github.com/react-dropzone/react-dropzone/issues/276).
+   */
+  accept: prop_types__WEBPACK_IMPORTED_MODULE_2___default().objectOf(prop_types__WEBPACK_IMPORTED_MODULE_2___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_2___default().string))),
+
+  /**
+   * Allow drag 'n' drop (or selection from the file dialog) of multiple files
+   */
+  multiple: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If false, allow dropped items to take over the current browser window
+   */
+  preventDropOnDocument: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If true, disables click to open the native file selection dialog
+   */
+  noClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If true, disables SPACE/ENTER to open the native file selection dialog.
+   * Note that it also stops tracking the focus state.
+   */
+  noKeyboard: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If true, disables drag 'n' drop
+   */
+  noDrag: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If true, stops drag event propagation to parents
+   */
+  noDragEventsBubbling: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Minimum file size (in bytes)
+   */
+  minSize: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number),
+
+  /**
+   * Maximum file size (in bytes)
+   */
+  maxSize: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number),
+
+  /**
+   * Maximum accepted number of files
+   * The default value is 0 which means there is no limitation to how many files are accepted.
+   */
+  maxFiles: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number),
+
+  /**
+   * Enable/disable the dropzone
+   */
+  disabled: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Use this to provide a custom file aggregator
+   *
+   * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+   */
+  getFilesFromEvent: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when closing the file dialog with no selection
+   */
+  onFileDialogCancel: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when opening the file dialog
+   */
+  onFileDialogOpen: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Set to true to use the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
+   * to open the file picker instead of using an `<input type="file">` click event.
+   */
+  useFsAccessApi: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Set to true to focus the root element on render
+   */
+  autoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Cb for when the `dragenter` event occurs.
+   *
+   * @param {DragEvent} event
+   */
+  onDragEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when the `dragleave` event occurs
+   *
+   * @param {DragEvent} event
+   */
+  onDragLeave: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when the `dragover` event occurs
+   *
+   * @param {DragEvent} event
+   */
+  onDragOver: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when the `drop` event occurs.
+   * Note that this callback is invoked after the `getFilesFromEvent` callback is done.
+   *
+   * Files are accepted or rejected based on the `accept`, `multiple`, `minSize` and `maxSize` props.
+   * `accept` must be a valid [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) according to [input element specification](https://www.w3.org/wiki/HTML/Elements/input/file) or a valid file extension.
+   * If `multiple` is set to false and additional files are dropped,
+   * all files besides the first will be rejected.
+   * Any file which does not have a size in the [`minSize`, `maxSize`] range, will be rejected as well.
+   *
+   * Note that the `onDrop` callback will always be invoked regardless if the dropped files were accepted or rejected.
+   * If you'd like to react to a specific scenario, use the `onDropAccepted`/`onDropRejected` props.
+   *
+   * `onDrop` will provide you with an array of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) objects which you can then process and send to a server.
+   * For example, with [SuperAgent](https://github.com/visionmedia/superagent) as a http/ajax library:
+   *
+   * ```js
+   * function onDrop(acceptedFiles) {
+   *   const req = request.post('/upload')
+   *   acceptedFiles.forEach(file => {
+   *     req.attach(file.name, file)
+   *   })
+   *   req.end(callback)
+   * }
+   * ```
+   *
+   * @param {File[]} acceptedFiles
+   * @param {FileRejection[]} fileRejections
+   * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+   */
+  onDrop: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when the `drop` event occurs.
+   * Note that if no files are accepted, this callback is not invoked.
+   *
+   * @param {File[]} files
+   * @param {(DragEvent|Event)} event
+   */
+  onDropAccepted: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when the `drop` event occurs.
+   * Note that if no files are rejected, this callback is not invoked.
+   *
+   * @param {FileRejection[]} fileRejections
+   * @param {(DragEvent|Event)} event
+   */
+  onDropRejected: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Cb for when there's some error from any of the promises.
+   *
+   * @param {Error} error
+   */
+  onError: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Custom validation function. It must return null if there's no errors.
+   * @param {File} file
+   * @returns {FileError|FileError[]|null}
+   */
+  validator: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dropzone);
+/**
+ * A function that is invoked for the `dragenter`,
+ * `dragover` and `dragleave` events.
+ * It is not invoked if the items are not files (such as link, text, etc.).
+ *
+ * @callback dragCb
+ * @param {DragEvent} event
+ */
+
+/**
+ * A function that is invoked for the `drop` or input change event.
+ * It is not invoked if the items are not files (such as link, text, etc.).
+ *
+ * @callback dropCb
+ * @param {File[]} acceptedFiles List of accepted files
+ * @param {FileRejection[]} fileRejections List of rejected files and why they were rejected
+ * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+ */
+
+/**
+ * A function that is invoked for the `drop` or input change event.
+ * It is not invoked if the items are files (such as link, text, etc.).
+ *
+ * @callback dropAcceptedCb
+ * @param {File[]} files List of accepted files that meet the given criteria
+ * (`accept`, `multiple`, `minSize`, `maxSize`)
+ * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+ */
+
+/**
+ * A function that is invoked for the `drop` or input change event.
+ *
+ * @callback dropRejectedCb
+ * @param {File[]} files List of rejected files that do not meet the given criteria
+ * (`accept`, `multiple`, `minSize`, `maxSize`)
+ * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+ */
+
+/**
+ * A function that is used aggregate files,
+ * in a asynchronous fashion, from drag or input change events.
+ *
+ * @callback getFilesFromEvent
+ * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+ * @returns {(File[]|Promise<File[]>)}
+ */
+
+/**
+ * An object with the current dropzone state.
+ *
+ * @typedef {object} DropzoneState
+ * @property {boolean} isFocused Dropzone area is in focus
+ * @property {boolean} isFileDialogActive File dialog is opened
+ * @property {boolean} isDragActive Active drag is in progress
+ * @property {boolean} isDragAccept Dragged files are accepted
+ * @property {boolean} isDragReject Some dragged files are rejected
+ * @property {File[]} acceptedFiles Accepted files
+ * @property {FileRejection[]} fileRejections Rejected files and why they were rejected
+ */
+
+/**
+ * An object with the dropzone methods.
+ *
+ * @typedef {object} DropzoneMethods
+ * @property {Function} getRootProps Returns the props you should apply to the root drop container you render
+ * @property {Function} getInputProps Returns the props you should apply to hidden file input you render
+ * @property {Function} open Open the native file selection dialog
+ */
+
+var initialState = {
+  isFocused: false,
+  isFileDialogActive: false,
+  isDragActive: false,
+  isDragAccept: false,
+  isDragReject: false,
+  acceptedFiles: [],
+  fileRejections: []
+};
+/**
+ * A React hook that creates a drag 'n' drop area.
+ *
+ * ```jsx
+ * function MyDropzone(props) {
+ *   const {getRootProps, getInputProps} = useDropzone({
+ *     onDrop: acceptedFiles => {
+ *       // do something with the File objects, e.g. upload to some server
+ *     }
+ *   });
+ *   return (
+ *     <div {...getRootProps()}>
+ *       <input {...getInputProps()} />
+ *       <p>Drag and drop some files here, or click to select files</p>
+ *     </div>
+ *   )
+ * }
+ * ```
+ *
+ * @function useDropzone
+ *
+ * @param {object} props
+ * @param {import("./utils").AcceptProp} [props.accept] Set accepted file types.
+ * Checkout https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker types option for more information.
+ * Keep in mind that mime type determination is not reliable across platforms. CSV files,
+ * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
+ * Windows. In some cases there might not be a mime type set at all (https://github.com/react-dropzone/react-dropzone/issues/276).
+ * @param {boolean} [props.multiple=true] Allow drag 'n' drop (or selection from the file dialog) of multiple files
+ * @param {boolean} [props.preventDropOnDocument=true] If false, allow dropped items to take over the current browser window
+ * @param {boolean} [props.noClick=false] If true, disables click to open the native file selection dialog
+ * @param {boolean} [props.noKeyboard=false] If true, disables SPACE/ENTER to open the native file selection dialog.
+ * Note that it also stops tracking the focus state.
+ * @param {boolean} [props.noDrag=false] If true, disables drag 'n' drop
+ * @param {boolean} [props.noDragEventsBubbling=false] If true, stops drag event propagation to parents
+ * @param {number} [props.minSize=0] Minimum file size (in bytes)
+ * @param {number} [props.maxSize=Infinity] Maximum file size (in bytes)
+ * @param {boolean} [props.disabled=false] Enable/disable the dropzone
+ * @param {getFilesFromEvent} [props.getFilesFromEvent] Use this to provide a custom file aggregator
+ * @param {Function} [props.onFileDialogCancel] Cb for when closing the file dialog with no selection
+ * @param {boolean} [props.useFsAccessApi] Set to true to use the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
+ * to open the file picker instead of using an `<input type="file">` click event.
+ * @param {boolean} autoFocus Set to true to auto focus the root element.
+ * @param {Function} [props.onFileDialogOpen] Cb for when opening the file dialog
+ * @param {dragCb} [props.onDragEnter] Cb for when the `dragenter` event occurs.
+ * @param {dragCb} [props.onDragLeave] Cb for when the `dragleave` event occurs
+ * @param {dragCb} [props.onDragOver] Cb for when the `dragover` event occurs
+ * @param {dropCb} [props.onDrop] Cb for when the `drop` event occurs.
+ * Note that this callback is invoked after the `getFilesFromEvent` callback is done.
+ *
+ * Files are accepted or rejected based on the `accept`, `multiple`, `minSize` and `maxSize` props.
+ * `accept` must be an object with keys as a valid [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) according to [input element specification](https://www.w3.org/wiki/HTML/Elements/input/file) and the value an array of file extensions (optional).
+ * If `multiple` is set to false and additional files are dropped,
+ * all files besides the first will be rejected.
+ * Any file which does not have a size in the [`minSize`, `maxSize`] range, will be rejected as well.
+ *
+ * Note that the `onDrop` callback will always be invoked regardless if the dropped files were accepted or rejected.
+ * If you'd like to react to a specific scenario, use the `onDropAccepted`/`onDropRejected` props.
+ *
+ * `onDrop` will provide you with an array of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) objects which you can then process and send to a server.
+ * For example, with [SuperAgent](https://github.com/visionmedia/superagent) as a http/ajax library:
+ *
+ * ```js
+ * function onDrop(acceptedFiles) {
+ *   const req = request.post('/upload')
+ *   acceptedFiles.forEach(file => {
+ *     req.attach(file.name, file)
+ *   })
+ *   req.end(callback)
+ * }
+ * ```
+ * @param {dropAcceptedCb} [props.onDropAccepted]
+ * @param {dropRejectedCb} [props.onDropRejected]
+ * @param {(error: Error) => void} [props.onError]
+ *
+ * @returns {DropzoneState & DropzoneMethods}
+ */
+
+function useDropzone() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _defaultProps$props = _objectSpread(_objectSpread({}, defaultProps), props),
+      accept = _defaultProps$props.accept,
+      disabled = _defaultProps$props.disabled,
+      getFilesFromEvent = _defaultProps$props.getFilesFromEvent,
+      maxSize = _defaultProps$props.maxSize,
+      minSize = _defaultProps$props.minSize,
+      multiple = _defaultProps$props.multiple,
+      maxFiles = _defaultProps$props.maxFiles,
+      onDragEnter = _defaultProps$props.onDragEnter,
+      onDragLeave = _defaultProps$props.onDragLeave,
+      onDragOver = _defaultProps$props.onDragOver,
+      onDrop = _defaultProps$props.onDrop,
+      onDropAccepted = _defaultProps$props.onDropAccepted,
+      onDropRejected = _defaultProps$props.onDropRejected,
+      onFileDialogCancel = _defaultProps$props.onFileDialogCancel,
+      onFileDialogOpen = _defaultProps$props.onFileDialogOpen,
+      useFsAccessApi = _defaultProps$props.useFsAccessApi,
+      autoFocus = _defaultProps$props.autoFocus,
+      preventDropOnDocument = _defaultProps$props.preventDropOnDocument,
+      noClick = _defaultProps$props.noClick,
+      noKeyboard = _defaultProps$props.noKeyboard,
+      noDrag = _defaultProps$props.noDrag,
+      noDragEventsBubbling = _defaultProps$props.noDragEventsBubbling,
+      onError = _defaultProps$props.onError,
+      validator = _defaultProps$props.validator;
+
+  var acceptAttr = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.acceptPropAsAcceptAttr)(accept);
+  }, [accept]);
+  var pickerTypes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.pickerOptionsFromAccept)(accept);
+  }, [accept]);
+  var onFileDialogOpenCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return typeof onFileDialogOpen === "function" ? onFileDialogOpen : noop;
+  }, [onFileDialogOpen]);
+  var onFileDialogCancelCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return typeof onFileDialogCancel === "function" ? onFileDialogCancel : noop;
+  }, [onFileDialogCancel]);
+  /**
+   * @constant
+   * @type {React.MutableRefObject<HTMLElement>}
+   */
+
+  var rootRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(reducer, initialState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  var isFocused = state.isFocused,
+      isFileDialogActive = state.isFileDialogActive;
+  var fsAccessApiWorksRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.canUseFileSystemAccessAPI)()); // Update file dialog active state when the window is focused on
+
+  var onWindowFocus = function onWindowFocus() {
+    // Execute the timeout only if the file dialog is opened in the browser
+    if (!fsAccessApiWorksRef.current && isFileDialogActive) {
+      setTimeout(function () {
+        if (inputRef.current) {
+          var files = inputRef.current.files;
+
+          if (!files.length) {
+            dispatch({
+              type: "closeDialog"
+            });
+            onFileDialogCancelCb();
+          }
+        }
+      }, 300);
+    }
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    window.addEventListener("focus", onWindowFocus, false);
+    return function () {
+      window.removeEventListener("focus", onWindowFocus, false);
+    };
+  }, [inputRef, isFileDialogActive, onFileDialogCancelCb, fsAccessApiWorksRef]);
+  var dragTargetsRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+
+  var onDocumentDrop = function onDocumentDrop(event) {
+    if (rootRef.current && rootRef.current.contains(event.target)) {
+      // If we intercepted an event for our instance, let it propagate down to the instance's onDrop handler
+      return;
+    }
+
+    event.preventDefault();
+    dragTargetsRef.current = [];
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (preventDropOnDocument) {
+      document.addEventListener("dragover", _utils_index__WEBPACK_IMPORTED_MODULE_3__.onDocumentDragOver, false);
+      document.addEventListener("drop", onDocumentDrop, false);
+    }
+
+    return function () {
+      if (preventDropOnDocument) {
+        document.removeEventListener("dragover", _utils_index__WEBPACK_IMPORTED_MODULE_3__.onDocumentDragOver);
+        document.removeEventListener("drop", onDocumentDrop);
+      }
+    };
+  }, [rootRef, preventDropOnDocument]); // Auto focus the root when autoFocus is true
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!disabled && autoFocus && rootRef.current) {
+      rootRef.current.focus();
+    }
+
+    return function () {};
+  }, [rootRef, autoFocus, disabled]);
+  var onErrCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    if (onError) {
+      onError(e);
+    } else {
+      // Let the user know something's gone wrong if they haven't provided the onError cb.
+      console.error(e);
+    }
+  }, [onError]);
+  var onDragEnterCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
+
+    event.persist();
+    stopPropagation(event);
+    dragTargetsRef.current = [].concat(_toConsumableArray(dragTargetsRef.current), [event.target]);
+
+    if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isEvtWithFiles)(event)) {
+      Promise.resolve(getFilesFromEvent(event)).then(function (files) {
+        if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isPropagationStopped)(event) && !noDragEventsBubbling) {
+          return;
+        }
+
+        var fileCount = files.length;
+        var isDragAccept = fileCount > 0 && (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.allFilesAccepted)({
+          files: files,
+          accept: acceptAttr,
+          minSize: minSize,
+          maxSize: maxSize,
+          multiple: multiple,
+          maxFiles: maxFiles,
+          validator: validator
+        });
+        var isDragReject = fileCount > 0 && !isDragAccept;
+        dispatch({
+          isDragAccept: isDragAccept,
+          isDragReject: isDragReject,
+          isDragActive: true,
+          type: "setDraggedFiles"
+        });
+
+        if (onDragEnter) {
+          onDragEnter(event);
+        }
+      }).catch(function (e) {
+        return onErrCb(e);
+      });
+    }
+  }, [getFilesFromEvent, onDragEnter, onErrCb, noDragEventsBubbling, acceptAttr, minSize, maxSize, multiple, maxFiles, validator]);
+  var onDragOverCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    event.preventDefault();
+    event.persist();
+    stopPropagation(event);
+    var hasFiles = (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isEvtWithFiles)(event);
+
+    if (hasFiles && event.dataTransfer) {
+      try {
+        event.dataTransfer.dropEffect = "copy";
+      } catch (_unused) {}
+      /* eslint-disable-line no-empty */
+
+    }
+
+    if (hasFiles && onDragOver) {
+      onDragOver(event);
+    }
+
+    return false;
+  }, [onDragOver, noDragEventsBubbling]);
+  var onDragLeaveCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    event.preventDefault();
+    event.persist();
+    stopPropagation(event); // Only deactivate once the dropzone and all children have been left
+
+    var targets = dragTargetsRef.current.filter(function (target) {
+      return rootRef.current && rootRef.current.contains(target);
+    }); // Make sure to remove a target present multiple times only once
+    // (Firefox may fire dragenter/dragleave multiple times on the same element)
+
+    var targetIdx = targets.indexOf(event.target);
+
+    if (targetIdx !== -1) {
+      targets.splice(targetIdx, 1);
+    }
+
+    dragTargetsRef.current = targets;
+
+    if (targets.length > 0) {
+      return;
+    }
+
+    dispatch({
+      type: "setDraggedFiles",
+      isDragActive: false,
+      isDragAccept: false,
+      isDragReject: false
+    });
+
+    if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isEvtWithFiles)(event) && onDragLeave) {
+      onDragLeave(event);
+    }
+  }, [rootRef, onDragLeave, noDragEventsBubbling]);
+  var setFiles = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (files, event) {
+    var acceptedFiles = [];
+    var fileRejections = [];
+    files.forEach(function (file) {
+      var _fileAccepted = (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.fileAccepted)(file, acceptAttr),
+          _fileAccepted2 = _slicedToArray(_fileAccepted, 2),
+          accepted = _fileAccepted2[0],
+          acceptError = _fileAccepted2[1];
+
+      var _fileMatchSize = (0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.fileMatchSize)(file, minSize, maxSize),
+          _fileMatchSize2 = _slicedToArray(_fileMatchSize, 2),
+          sizeMatch = _fileMatchSize2[0],
+          sizeError = _fileMatchSize2[1];
+
+      var customErrors = validator ? validator(file) : null;
+
+      if (accepted && sizeMatch && !customErrors) {
+        acceptedFiles.push(file);
+      } else {
+        var errors = [acceptError, sizeError];
+
+        if (customErrors) {
+          errors = errors.concat(customErrors);
+        }
+
+        fileRejections.push({
+          file: file,
+          errors: errors.filter(function (e) {
+            return e;
+          })
+        });
+      }
+    });
+
+    if (!multiple && acceptedFiles.length > 1 || multiple && maxFiles >= 1 && acceptedFiles.length > maxFiles) {
+      // Reject everything and empty accepted files
+      acceptedFiles.forEach(function (file) {
+        fileRejections.push({
+          file: file,
+          errors: [_utils_index__WEBPACK_IMPORTED_MODULE_3__.TOO_MANY_FILES_REJECTION]
+        });
+      });
+      acceptedFiles.splice(0);
+    }
+
+    dispatch({
+      acceptedFiles: acceptedFiles,
+      fileRejections: fileRejections,
+      type: "setFiles"
+    });
+
+    if (onDrop) {
+      onDrop(acceptedFiles, fileRejections, event);
+    }
+
+    if (fileRejections.length > 0 && onDropRejected) {
+      onDropRejected(fileRejections, event);
+    }
+
+    if (acceptedFiles.length > 0 && onDropAccepted) {
+      onDropAccepted(acceptedFiles, event);
+    }
+  }, [dispatch, multiple, acceptAttr, minSize, maxSize, maxFiles, onDrop, onDropAccepted, onDropRejected, validator]);
+  var onDropCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
+
+    event.persist();
+    stopPropagation(event);
+    dragTargetsRef.current = [];
+
+    if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isEvtWithFiles)(event)) {
+      Promise.resolve(getFilesFromEvent(event)).then(function (files) {
+        if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isPropagationStopped)(event) && !noDragEventsBubbling) {
+          return;
+        }
+
+        setFiles(files, event);
+      }).catch(function (e) {
+        return onErrCb(e);
+      });
+    }
+
+    dispatch({
+      type: "reset"
+    });
+  }, [getFilesFromEvent, setFiles, onErrCb, noDragEventsBubbling]); // Fn for opening the file dialog programmatically
+
+  var openFileDialog = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    // No point to use FS access APIs if context is not secure
+    // https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts#feature_detection
+    if (fsAccessApiWorksRef.current) {
+      dispatch({
+        type: "openDialog"
+      });
+      onFileDialogOpenCb(); // https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker
+
+      var opts = {
+        multiple: multiple,
+        types: pickerTypes
+      };
+      window.showOpenFilePicker(opts).then(function (handles) {
+        return getFilesFromEvent(handles);
+      }).then(function (files) {
+        setFiles(files, null);
+        dispatch({
+          type: "closeDialog"
+        });
+      }).catch(function (e) {
+        // AbortError means the user canceled
+        if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isAbort)(e)) {
+          onFileDialogCancelCb(e);
+          dispatch({
+            type: "closeDialog"
+          });
+        } else if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isSecurityError)(e)) {
+          fsAccessApiWorksRef.current = false; // CORS, so cannot use this API
+          // Try using the input
+
+          if (inputRef.current) {
+            inputRef.current.value = null;
+            inputRef.current.click();
+          } else {
+            onErrCb(new Error("Cannot open the file picker because the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API is not supported and no <input> was provided."));
+          }
+        } else {
+          onErrCb(e);
+        }
+      });
+      return;
+    }
+
+    if (inputRef.current) {
+      dispatch({
+        type: "openDialog"
+      });
+      onFileDialogOpenCb();
+      inputRef.current.value = null;
+      inputRef.current.click();
+    }
+  }, [dispatch, onFileDialogOpenCb, onFileDialogCancelCb, useFsAccessApi, setFiles, onErrCb, pickerTypes, multiple]); // Cb to open the file dialog when SPACE/ENTER occurs on the dropzone
+
+  var onKeyDownCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    // Ignore keyboard events bubbling up the DOM tree
+    if (!rootRef.current || !rootRef.current.isEqualNode(event.target)) {
+      return;
+    }
+
+    if (event.key === " " || event.key === "Enter" || event.keyCode === 32 || event.keyCode === 13) {
+      event.preventDefault();
+      openFileDialog();
+    }
+  }, [rootRef, openFileDialog]); // Update focus state for the dropzone
+
+  var onFocusCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    dispatch({
+      type: "focus"
+    });
+  }, []);
+  var onBlurCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    dispatch({
+      type: "blur"
+    });
+  }, []); // Cb to open the file dialog when click occurs on the dropzone
+
+  var onClickCb = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    if (noClick) {
+      return;
+    } // In IE11/Edge the file-browser dialog is blocking, therefore, use setTimeout()
+    // to ensure React can handle state changes
+    // See: https://github.com/react-dropzone/react-dropzone/issues/450
+
+
+    if ((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.isIeOrEdge)()) {
+      setTimeout(openFileDialog, 0);
+    } else {
+      openFileDialog();
+    }
+  }, [noClick, openFileDialog]);
+
+  var composeHandler = function composeHandler(fn) {
+    return disabled ? null : fn;
+  };
+
+  var composeKeyboardHandler = function composeKeyboardHandler(fn) {
+    return noKeyboard ? null : composeHandler(fn);
+  };
+
+  var composeDragHandler = function composeDragHandler(fn) {
+    return noDrag ? null : composeHandler(fn);
+  };
+
+  var stopPropagation = function stopPropagation(event) {
+    if (noDragEventsBubbling) {
+      event.stopPropagation();
+    }
+  };
+
+  var getRootProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return function () {
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref2$refKey = _ref2.refKey,
+          refKey = _ref2$refKey === void 0 ? "ref" : _ref2$refKey,
+          role = _ref2.role,
+          onKeyDown = _ref2.onKeyDown,
+          onFocus = _ref2.onFocus,
+          onBlur = _ref2.onBlur,
+          onClick = _ref2.onClick,
+          onDragEnter = _ref2.onDragEnter,
+          onDragOver = _ref2.onDragOver,
+          onDragLeave = _ref2.onDragLeave,
+          onDrop = _ref2.onDrop,
+          rest = _objectWithoutProperties(_ref2, _excluded3);
+
+      return _objectSpread(_objectSpread(_defineProperty({
+        onKeyDown: composeKeyboardHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onKeyDown, onKeyDownCb)),
+        onFocus: composeKeyboardHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onFocus, onFocusCb)),
+        onBlur: composeKeyboardHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onBlur, onBlurCb)),
+        onClick: composeHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onClick, onClickCb)),
+        onDragEnter: composeDragHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onDragEnter, onDragEnterCb)),
+        onDragOver: composeDragHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onDragOver, onDragOverCb)),
+        onDragLeave: composeDragHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onDragLeave, onDragLeaveCb)),
+        onDrop: composeDragHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onDrop, onDropCb)),
+        role: typeof role === "string" && role !== "" ? role : "presentation"
+      }, refKey, rootRef), !disabled && !noKeyboard ? {
+        tabIndex: 0
+      } : {}), rest);
+    };
+  }, [rootRef, onKeyDownCb, onFocusCb, onBlurCb, onClickCb, onDragEnterCb, onDragOverCb, onDragLeaveCb, onDropCb, noKeyboard, noDrag, disabled]);
+  var onInputElementClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
+    event.stopPropagation();
+  }, []);
+  var getInputProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return function () {
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref3$refKey = _ref3.refKey,
+          refKey = _ref3$refKey === void 0 ? "ref" : _ref3$refKey,
+          onChange = _ref3.onChange,
+          onClick = _ref3.onClick,
+          rest = _objectWithoutProperties(_ref3, _excluded4);
+
+      var inputProps = _defineProperty({
+        accept: acceptAttr,
+        multiple: multiple,
+        type: "file",
+        style: {
+          display: "none"
+        },
+        onChange: composeHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onChange, onDropCb)),
+        onClick: composeHandler((0,_utils_index__WEBPACK_IMPORTED_MODULE_3__.composeEventHandlers)(onClick, onInputElementClick)),
+        tabIndex: -1
+      }, refKey, inputRef);
+
+      return _objectSpread(_objectSpread({}, inputProps), rest);
+    };
+  }, [inputRef, accept, multiple, onDropCb, disabled]);
+  return _objectSpread(_objectSpread({}, state), {}, {
+    isFocused: isFocused && !disabled,
+    getRootProps: getRootProps,
+    getInputProps: getInputProps,
+    rootRef: rootRef,
+    inputRef: inputRef,
+    open: composeHandler(openFileDialog)
+  });
+}
+/**
+ * @param {DropzoneState} state
+ * @param {{type: string} & DropzoneState} action
+ * @returns {DropzoneState}
+ */
+
+function reducer(state, action) {
+  /* istanbul ignore next */
+  switch (action.type) {
+    case "focus":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isFocused: true
+      });
+
+    case "blur":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isFocused: false
+      });
+
+    case "openDialog":
+      return _objectSpread(_objectSpread({}, initialState), {}, {
+        isFileDialogActive: true
+      });
+
+    case "closeDialog":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isFileDialogActive: false
+      });
+
+    case "setDraggedFiles":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isDragActive: action.isDragActive,
+        isDragAccept: action.isDragAccept,
+        isDragReject: action.isDragReject
+      });
+
+    case "setFiles":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        acceptedFiles: action.acceptedFiles,
+        fileRejections: action.fileRejections
+      });
+
+    case "reset":
+      return _objectSpread({}, initialState);
+
+    default:
+      return state;
+  }
+}
+
+function noop() {}
+
+
+
+/***/ }),
+
+/***/ "./node_modules/react-dropzone/dist/es/utils/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-dropzone/dist/es/utils/index.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ErrorCode": () => (/* binding */ ErrorCode),
+/* harmony export */   "FILE_INVALID_TYPE": () => (/* binding */ FILE_INVALID_TYPE),
+/* harmony export */   "FILE_TOO_LARGE": () => (/* binding */ FILE_TOO_LARGE),
+/* harmony export */   "FILE_TOO_SMALL": () => (/* binding */ FILE_TOO_SMALL),
+/* harmony export */   "TOO_MANY_FILES": () => (/* binding */ TOO_MANY_FILES),
+/* harmony export */   "TOO_MANY_FILES_REJECTION": () => (/* binding */ TOO_MANY_FILES_REJECTION),
+/* harmony export */   "acceptPropAsAcceptAttr": () => (/* binding */ acceptPropAsAcceptAttr),
+/* harmony export */   "allFilesAccepted": () => (/* binding */ allFilesAccepted),
+/* harmony export */   "canUseFileSystemAccessAPI": () => (/* binding */ canUseFileSystemAccessAPI),
+/* harmony export */   "composeEventHandlers": () => (/* binding */ composeEventHandlers),
+/* harmony export */   "fileAccepted": () => (/* binding */ fileAccepted),
+/* harmony export */   "fileMatchSize": () => (/* binding */ fileMatchSize),
+/* harmony export */   "getInvalidTypeRejectionErr": () => (/* binding */ getInvalidTypeRejectionErr),
+/* harmony export */   "getTooLargeRejectionErr": () => (/* binding */ getTooLargeRejectionErr),
+/* harmony export */   "getTooSmallRejectionErr": () => (/* binding */ getTooSmallRejectionErr),
+/* harmony export */   "isAbort": () => (/* binding */ isAbort),
+/* harmony export */   "isEvtWithFiles": () => (/* binding */ isEvtWithFiles),
+/* harmony export */   "isExt": () => (/* binding */ isExt),
+/* harmony export */   "isIeOrEdge": () => (/* binding */ isIeOrEdge),
+/* harmony export */   "isKindFile": () => (/* binding */ isKindFile),
+/* harmony export */   "isMIMEType": () => (/* binding */ isMIMEType),
+/* harmony export */   "isPropagationStopped": () => (/* binding */ isPropagationStopped),
+/* harmony export */   "isSecurityError": () => (/* binding */ isSecurityError),
+/* harmony export */   "onDocumentDragOver": () => (/* binding */ onDocumentDragOver),
+/* harmony export */   "pickerOptionsFromAccept": () => (/* binding */ pickerOptionsFromAccept)
+/* harmony export */ });
+/* harmony import */ var attr_accept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! attr-accept */ "./node_modules/attr-accept/dist/es/index.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+ // Error codes
+
+var FILE_INVALID_TYPE = "file-invalid-type";
+var FILE_TOO_LARGE = "file-too-large";
+var FILE_TOO_SMALL = "file-too-small";
+var TOO_MANY_FILES = "too-many-files";
+var ErrorCode = {
+  FileInvalidType: FILE_INVALID_TYPE,
+  FileTooLarge: FILE_TOO_LARGE,
+  FileTooSmall: FILE_TOO_SMALL,
+  TooManyFiles: TOO_MANY_FILES
+}; // File Errors
+
+var getInvalidTypeRejectionErr = function getInvalidTypeRejectionErr(accept) {
+  accept = Array.isArray(accept) && accept.length === 1 ? accept[0] : accept;
+  var messageSuffix = Array.isArray(accept) ? "one of ".concat(accept.join(", ")) : accept;
+  return {
+    code: FILE_INVALID_TYPE,
+    message: "File type must be ".concat(messageSuffix)
+  };
+};
+var getTooLargeRejectionErr = function getTooLargeRejectionErr(maxSize) {
+  return {
+    code: FILE_TOO_LARGE,
+    message: "File is larger than ".concat(maxSize, " ").concat(maxSize === 1 ? "byte" : "bytes")
+  };
+};
+var getTooSmallRejectionErr = function getTooSmallRejectionErr(minSize) {
+  return {
+    code: FILE_TOO_SMALL,
+    message: "File is smaller than ".concat(minSize, " ").concat(minSize === 1 ? "byte" : "bytes")
+  };
+};
+var TOO_MANY_FILES_REJECTION = {
+  code: TOO_MANY_FILES,
+  message: "Too many files"
+}; // Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
+// that MIME type will always be accepted
+
+function fileAccepted(file, accept) {
+  var isAcceptable = file.type === "application/x-moz-file" || (0,attr_accept__WEBPACK_IMPORTED_MODULE_0__["default"])(file, accept);
+  return [isAcceptable, isAcceptable ? null : getInvalidTypeRejectionErr(accept)];
+}
+function fileMatchSize(file, minSize, maxSize) {
+  if (isDefined(file.size)) {
+    if (isDefined(minSize) && isDefined(maxSize)) {
+      if (file.size > maxSize) return [false, getTooLargeRejectionErr(maxSize)];
+      if (file.size < minSize) return [false, getTooSmallRejectionErr(minSize)];
+    } else if (isDefined(minSize) && file.size < minSize) return [false, getTooSmallRejectionErr(minSize)];else if (isDefined(maxSize) && file.size > maxSize) return [false, getTooLargeRejectionErr(maxSize)];
+  }
+
+  return [true, null];
+}
+
+function isDefined(value) {
+  return value !== undefined && value !== null;
+}
+/**
+ *
+ * @param {object} options
+ * @param {File[]} options.files
+ * @param {string|string[]} [options.accept]
+ * @param {number} [options.minSize]
+ * @param {number} [options.maxSize]
+ * @param {boolean} [options.multiple]
+ * @param {number} [options.maxFiles]
+ * @param {(f: File) => FileError|FileError[]|null} [options.validator]
+ * @returns
+ */
+
+
+function allFilesAccepted(_ref) {
+  var files = _ref.files,
+      accept = _ref.accept,
+      minSize = _ref.minSize,
+      maxSize = _ref.maxSize,
+      multiple = _ref.multiple,
+      maxFiles = _ref.maxFiles,
+      validator = _ref.validator;
+
+  if (!multiple && files.length > 1 || multiple && maxFiles >= 1 && files.length > maxFiles) {
+    return false;
+  }
+
+  return files.every(function (file) {
+    var _fileAccepted = fileAccepted(file, accept),
+        _fileAccepted2 = _slicedToArray(_fileAccepted, 1),
+        accepted = _fileAccepted2[0];
+
+    var _fileMatchSize = fileMatchSize(file, minSize, maxSize),
+        _fileMatchSize2 = _slicedToArray(_fileMatchSize, 1),
+        sizeMatch = _fileMatchSize2[0];
+
+    var customErrors = validator ? validator(file) : null;
+    return accepted && sizeMatch && !customErrors;
+  });
+} // React's synthetic events has event.isPropagationStopped,
+// but to remain compatibility with other libs (Preact) fall back
+// to check event.cancelBubble
+
+function isPropagationStopped(event) {
+  if (typeof event.isPropagationStopped === "function") {
+    return event.isPropagationStopped();
+  } else if (typeof event.cancelBubble !== "undefined") {
+    return event.cancelBubble;
+  }
+
+  return false;
+}
+function isEvtWithFiles(event) {
+  if (!event.dataTransfer) {
+    return !!event.target && !!event.target.files;
+  } // https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types#file
+
+
+  return Array.prototype.some.call(event.dataTransfer.types, function (type) {
+    return type === "Files" || type === "application/x-moz-file";
+  });
+}
+function isKindFile(item) {
+  return _typeof(item) === "object" && item !== null && item.kind === "file";
+} // allow the entire document to be a drag target
+
+function onDocumentDragOver(event) {
+  event.preventDefault();
+}
+
+function isIe(userAgent) {
+  return userAgent.indexOf("MSIE") !== -1 || userAgent.indexOf("Trident/") !== -1;
+}
+
+function isEdge(userAgent) {
+  return userAgent.indexOf("Edge/") !== -1;
+}
+
+function isIeOrEdge() {
+  var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.navigator.userAgent;
+  return isIe(userAgent) || isEdge(userAgent);
+}
+/**
+ * This is intended to be used to compose event handlers
+ * They are executed in order until one of them calls `event.isPropagationStopped()`.
+ * Note that the check is done on the first invoke too,
+ * meaning that if propagation was stopped before invoking the fns,
+ * no handlers will be executed.
+ *
+ * @param {Function} fns the event hanlder functions
+ * @return {Function} the event handler to add to an element
+ */
+
+function composeEventHandlers() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    return fns.some(function (fn) {
+      if (!isPropagationStopped(event) && fn) {
+        fn.apply(void 0, [event].concat(args));
+      }
+
+      return isPropagationStopped(event);
+    });
+  };
+}
+/**
+ * canUseFileSystemAccessAPI checks if the [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API)
+ * is supported by the browser.
+ * @returns {boolean}
+ */
+
+function canUseFileSystemAccessAPI() {
+  return "showOpenFilePicker" in window;
+}
+/**
+ * Convert the `{accept}` dropzone prop to the
+ * `{types}` option for https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker
+ *
+ * @param {AcceptProp} accept
+ * @returns {{accept: string[]}[]}
+ */
+
+function pickerOptionsFromAccept(accept) {
+  if (isDefined(accept)) {
+    var acceptForPicker = Object.entries(accept).filter(function (_ref2) {
+      var _ref3 = _slicedToArray(_ref2, 2),
+          mimeType = _ref3[0],
+          ext = _ref3[1];
+
+      var ok = true;
+
+      if (!isMIMEType(mimeType)) {
+        console.warn("Skipped \"".concat(mimeType, "\" because it is not a valid MIME type. Check https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types for a list of valid MIME types."));
+        ok = false;
+      }
+
+      if (!Array.isArray(ext) || !ext.every(isExt)) {
+        console.warn("Skipped \"".concat(mimeType, "\" because an invalid file extension was provided."));
+        ok = false;
+      }
+
+      return ok;
+    }).reduce(function (agg, _ref4) {
+      var _ref5 = _slicedToArray(_ref4, 2),
+          mimeType = _ref5[0],
+          ext = _ref5[1];
+
+      return _objectSpread(_objectSpread({}, agg), {}, _defineProperty({}, mimeType, ext));
+    }, {});
+    return [{
+      accept: acceptForPicker
+    }];
+  }
+
+  return accept;
+}
+/**
+ * Convert the `{accept}` dropzone prop to an array of MIME types/extensions.
+ * @param {AcceptProp} accept
+ * @returns {string}
+ */
+
+function acceptPropAsAcceptAttr(accept) {
+  if (isDefined(accept)) {
+    return Object.entries(accept).reduce(function (a, _ref6) {
+      var _ref7 = _slicedToArray(_ref6, 2),
+          mimeType = _ref7[0],
+          ext = _ref7[1];
+
+      return [].concat(_toConsumableArray(a), [mimeType], _toConsumableArray(ext));
+    }, []) // Silently discard invalid entries as pickerOptionsFromAccept warns about these
+    .filter(function (v) {
+      return isMIMEType(v) || isExt(v);
+    }).join(",");
+  }
+
+  return undefined;
+}
+/**
+ * Check if v is an exception caused by aborting a request (e.g window.showOpenFilePicker()).
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/API/DOMException.
+ * @param {any} v
+ * @returns {boolean} True if v is an abort exception.
+ */
+
+function isAbort(v) {
+  return v instanceof DOMException && (v.name === "AbortError" || v.code === v.ABORT_ERR);
+}
+/**
+ * Check if v is a security error.
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/API/DOMException.
+ * @param {any} v
+ * @returns {boolean} True if v is a security error.
+ */
+
+function isSecurityError(v) {
+  return v instanceof DOMException && (v.name === "SecurityError" || v.code === v.SECURITY_ERR);
+}
+/**
+ * Check if v is a MIME type string.
+ *
+ * See accepted format: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers.
+ *
+ * @param {string} v
+ */
+
+function isMIMEType(v) {
+  return v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || /\w+\/[-+.\w]+/g.test(v);
+}
+/**
+ * Check if v is a file extension.
+ * @param {string} v
+ */
+
+function isExt(v) {
+  return /^.*\.[\w]+$/.test(v);
+}
+/**
+ * @typedef {Object.<string, string[]>} AcceptProp
+ */
+
+/**
+ * @typedef {object} FileError
+ * @property {string} message
+ * @property {ErrorCode|string} code
+ */
+
+/**
+ * @typedef {"file-invalid-type"|"file-too-large"|"file-too-small"|"too-many-files"} ErrorCode
+ */
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -79110,6 +80910,17 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-paginate/dist/react-paginate.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-paginate/dist/react-paginate.js ***!
+  \************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t(__webpack_require__(/*! react */ "./node_modules/react/index.js")):0}(this,(function(__WEBPACK_EXTERNAL_MODULE__98__){return(()=>{var __webpack_modules__={759:(e,t,a)=>{"use strict";a.d(t,{Z:()=>c});var r,o=a(98),_=a.n(o),n=a(697),i=a.n(n);function s(){return s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},s.apply(this,arguments)}e=a.hmd(e),(r="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.enterModule:void 0)&&r(e),"undefined"!=typeof reactHotLoaderGlobal&&reactHotLoaderGlobal.default.signature;var l=function(e){var t=e.breakLabel,a=e.breakClassName,r=e.breakLinkClassName,o=e.breakHandler,n=e.getEventListener,i=a||"break";return _().createElement("li",{className:i},_().createElement("a",s({className:r,role:"button",tabIndex:"0",onKeyPress:o},n(o)),t))};l.propTypes={breakLabel:i().oneOfType([i().string,i().node]),breakClassName:i().string,breakLinkClassName:i().string,breakHandler:i().func.isRequired,getEventListener:i().func.isRequired};var p=l;const c=p;var d,u;(d="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default:void 0)&&(d.register(l,"BreakView","/home/yoan/work/oss/react-paginate/react_components/BreakView.js"),d.register(p,"default","/home/yoan/work/oss/react-paginate/react_components/BreakView.js")),(u="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.leaveModule:void 0)&&u(e)},770:(e,t,a)=>{"use strict";a.d(t,{Z:()=>c});var r,o=a(98),_=a.n(o),n=a(697),i=a.n(n);function s(){return s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},s.apply(this,arguments)}e=a.hmd(e),(r="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.enterModule:void 0)&&r(e),"undefined"!=typeof reactHotLoaderGlobal&&reactHotLoaderGlobal.default.signature;var l=function(e){var t=e.pageClassName,a=e.pageLinkClassName,r=e.page,o=e.selected,n=e.activeClassName,i=e.activeLinkClassName,l=e.getEventListener,p=e.pageSelectedHandler,c=e.href,d=e.extraAriaContext,u=e.pageLabelBuilder,f=e.rel,g=e.ariaLabel||"Page "+r+(d?" "+d:""),P=null;return o&&(P="page",g=e.ariaLabel||"Page "+r+" is your current page",t=void 0!==t?t+" "+n:n,void 0!==a?void 0!==i&&(a=a+" "+i):a=i),_().createElement("li",{className:t},_().createElement("a",s({rel:f,role:c?void 0:"button",className:a,href:c,tabIndex:o?"-1":"0","aria-label":g,"aria-current":P,onKeyPress:p},l(p)),u(r)))};l.propTypes={pageSelectedHandler:i().func.isRequired,selected:i().bool.isRequired,pageClassName:i().string,pageLinkClassName:i().string,activeClassName:i().string,activeLinkClassName:i().string,extraAriaContext:i().string,href:i().string,ariaLabel:i().string,page:i().number.isRequired,getEventListener:i().func.isRequired,pageLabelBuilder:i().func.isRequired,rel:i().string};var p=l;const c=p;var d,u;(d="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default:void 0)&&(d.register(l,"PageView","/home/yoan/work/oss/react-paginate/react_components/PageView.js"),d.register(p,"default","/home/yoan/work/oss/react-paginate/react_components/PageView.js")),(u="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.leaveModule:void 0)&&u(e)},214:(module,__webpack_exports__,__nested_webpack_require_3517__)=>{"use strict";__nested_webpack_require_3517__.d(__webpack_exports__,{Z:()=>PaginationBoxView});var react__WEBPACK_IMPORTED_MODULE_0__=__nested_webpack_require_3517__(98),react__WEBPACK_IMPORTED_MODULE_0___default=__nested_webpack_require_3517__.n(react__WEBPACK_IMPORTED_MODULE_0__),prop_types__WEBPACK_IMPORTED_MODULE_1__=__nested_webpack_require_3517__(697),prop_types__WEBPACK_IMPORTED_MODULE_1___default=__nested_webpack_require_3517__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__),_PageView__WEBPACK_IMPORTED_MODULE_2__=__nested_webpack_require_3517__(770),_BreakView__WEBPACK_IMPORTED_MODULE_3__=__nested_webpack_require_3517__(759),_utils__WEBPACK_IMPORTED_MODULE_4__=__nested_webpack_require_3517__(923),enterModule;function _typeof(e){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_typeof(e)}function _extends(){return _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},_extends.apply(this,arguments)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var a=0;a<t.length;a++){var r=t[a];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _createClass(e,t,a){return t&&_defineProperties(e.prototype,t),a&&_defineProperties(e,a),e}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return _setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},_setPrototypeOf(e,t)}function _createSuper(e){var t=_isNativeReflectConstruct();return function(){var a,r=_getPrototypeOf(e);if(t){var o=_getPrototypeOf(this).constructor;a=Reflect.construct(r,arguments,o)}else a=r.apply(this,arguments);return _possibleConstructorReturn(this,a)}}function _possibleConstructorReturn(e,t){if(t&&("object"===_typeof(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return _assertThisInitialized(e)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _isNativeReflectConstruct(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}function _getPrototypeOf(e){return _getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},_getPrototypeOf(e)}function _defineProperty(e,t,a){return t in e?Object.defineProperty(e,t,{value:a,enumerable:!0,configurable:!0,writable:!0}):e[t]=a,e}module=__nested_webpack_require_3517__.hmd(module),enterModule="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.enterModule:void 0,enterModule&&enterModule(module);var __signature__="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default.signature:function(e){return e},PaginationBoxView=function(_Component){_inherits(PaginationBoxView,_Component);var _super=_createSuper(PaginationBoxView);function PaginationBoxView(e){var t,a;return _classCallCheck(this,PaginationBoxView),_defineProperty(_assertThisInitialized(t=_super.call(this,e)),"handlePreviousPage",(function(e){var a=t.state.selected;t.handleClick(e,null,a>0?a-1:void 0,{isPrevious:!0})})),_defineProperty(_assertThisInitialized(t),"handleNextPage",(function(e){var a=t.state.selected,r=t.props.pageCount;t.handleClick(e,null,a<r-1?a+1:void 0,{isNext:!0})})),_defineProperty(_assertThisInitialized(t),"handlePageSelected",(function(e,a){if(t.state.selected===e)return t.callActiveCallback(e),void t.handleClick(a,null,void 0,{isActive:!0});t.handleClick(a,null,e)})),_defineProperty(_assertThisInitialized(t),"handlePageChange",(function(e){t.state.selected!==e&&(t.setState({selected:e}),t.callCallback(e))})),_defineProperty(_assertThisInitialized(t),"getEventListener",(function(e){return _defineProperty({},t.props.eventListener,e)})),_defineProperty(_assertThisInitialized(t),"handleClick",(function(e,a,r){var o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},_=o.isPrevious,n=void 0!==_&&_,i=o.isNext,s=void 0!==i&&i,l=o.isBreak,p=void 0!==l&&l,c=o.isActive,d=void 0!==c&&c;e.preventDefault?e.preventDefault():e.returnValue=!1;var u=t.state.selected,f=t.props.onClick,g=r;if(f){var P=f({index:a,selected:u,nextSelectedPage:r,event:e,isPrevious:n,isNext:s,isBreak:p,isActive:d});if(!1===P)return;Number.isInteger(P)&&(g=P)}void 0!==g&&t.handlePageChange(g)})),_defineProperty(_assertThisInitialized(t),"handleBreakClick",(function(e,a){var r=t.state.selected;t.handleClick(a,e,r<e?t.getForwardJump():t.getBackwardJump(),{isBreak:!0})})),_defineProperty(_assertThisInitialized(t),"callCallback",(function(e){void 0!==t.props.onPageChange&&"function"==typeof t.props.onPageChange&&t.props.onPageChange({selected:e})})),_defineProperty(_assertThisInitialized(t),"callActiveCallback",(function(e){void 0!==t.props.onPageActive&&"function"==typeof t.props.onPageActive&&t.props.onPageActive({selected:e})})),_defineProperty(_assertThisInitialized(t),"getElementPageRel",(function(e){var a=t.state.selected,r=t.props,o=r.nextPageRel,_=r.prevPageRel,n=r.selectedPageRel;return a-1===e?_:a===e?n:a+1===e?o:void 0})),_defineProperty(_assertThisInitialized(t),"pagination",(function(){var e=[],a=t.props,r=a.pageRangeDisplayed,o=a.pageCount,_=a.marginPagesDisplayed,n=a.breakLabel,i=a.breakClassName,s=a.breakLinkClassName,l=t.state.selected;if(o<=r)for(var p=0;p<o;p++)e.push(t.getPageElement(p));else{var c=r/2,d=r-c;l>o-r/2?c=r-(d=o-l):l<r/2&&(d=r-(c=l));var u,f,g=function(e){return t.getPageElement(e)},P=[];for(u=0;u<o;u++){var E=u+1;E<=_||E>o-_||u>=l-c&&u<=l+(0===l&&r>1?d-1:d)?P.push({type:"page",index:u,display:g(u)}):n&&P.length>0&&P[P.length-1].display!==f&&(r>0||_>0)&&(f=react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BreakView__WEBPACK_IMPORTED_MODULE_3__.Z,{key:u,breakLabel:n,breakClassName:i,breakLinkClassName:s,breakHandler:t.handleBreakClick.bind(null,u),getEventListener:t.getEventListener}),P.push({type:"break",index:u,display:f}))}P.forEach((function(t,a){var r=t;"break"===t.type&&P[a-1]&&"page"===P[a-1].type&&P[a+1]&&"page"===P[a+1].type&&P[a+1].index-P[a-1].index<=2&&(r={type:"page",index:t.index,display:g(t.index)}),e.push(r.display)}))}return e})),void 0!==e.initialPage&&void 0!==e.forcePage&&console.warn("(react-paginate): Both initialPage (".concat(e.initialPage,") and forcePage (").concat(e.forcePage,") props are provided, which is discouraged.")+" Use exclusively forcePage prop for a controlled component.\nSee https://reactjs.org/docs/forms.html#controlled-components"),a=e.initialPage?e.initialPage:e.forcePage?e.forcePage:0,t.state={selected:a},t}return _createClass(PaginationBoxView,[{key:"componentDidMount",value:function(){var e=this.props,t=e.initialPage,a=e.disableInitialCallback,r=e.extraAriaContext,o=e.pageCount,_=e.forcePage;void 0===t||a||this.callCallback(t),r&&console.warn("DEPRECATED (react-paginate): The extraAriaContext prop is deprecated. You should now use the ariaLabelBuilder instead."),Number.isInteger(o)||console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(o,"). Did you forget a Math.ceil()?")),void 0!==t&&t>o-1&&console.warn("(react-paginate): The initialPage prop provided is greater than the maximum page index from pageCount prop (".concat(t," > ").concat(o-1,").")),void 0!==_&&_>o-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(_," > ").concat(o-1,")."))}},{key:"componentDidUpdate",value:function(e){void 0!==this.props.forcePage&&this.props.forcePage!==e.forcePage&&(this.props.forcePage>this.props.pageCount-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(this.props.forcePage," > ").concat(this.props.pageCount-1,").")),this.setState({selected:this.props.forcePage})),Number.isInteger(e.pageCount)&&!Number.isInteger(this.props.pageCount)&&console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(this.props.pageCount,"). Did you forget a Math.ceil()?"))}},{key:"getForwardJump",value:function(){var e=this.state.selected,t=this.props,a=t.pageCount,r=e+t.pageRangeDisplayed;return r>=a?a-1:r}},{key:"getBackwardJump",value:function(){var e=this.state.selected-this.props.pageRangeDisplayed;return e<0?0:e}},{key:"getElementHref",value:function(e){var t=this.props,a=t.hrefBuilder,r=t.pageCount,o=t.hrefAllControls;if(a)return o||e>=0&&e<r?a(e+1,r,this.state.selected):void 0}},{key:"ariaLabelBuilder",value:function(e){var t=e===this.state.selected;if(this.props.ariaLabelBuilder&&e>=0&&e<this.props.pageCount){var a=this.props.ariaLabelBuilder(e+1,t);return this.props.extraAriaContext&&!t&&(a=a+" "+this.props.extraAriaContext),a}}},{key:"getPageElement",value:function(e){var t=this.state.selected,a=this.props,r=a.pageClassName,o=a.pageLinkClassName,_=a.activeClassName,n=a.activeLinkClassName,i=a.extraAriaContext,s=a.pageLabelBuilder;return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PageView__WEBPACK_IMPORTED_MODULE_2__.Z,{key:e,pageSelectedHandler:this.handlePageSelected.bind(null,e),selected:t===e,rel:this.getElementPageRel(e),pageClassName:r,pageLinkClassName:o,activeClassName:_,activeLinkClassName:n,extraAriaContext:i,href:this.getElementHref(e),ariaLabel:this.ariaLabelBuilder(e),page:e+1,pageLabelBuilder:s,getEventListener:this.getEventListener})}},{key:"render",value:function(){var e=this.props.renderOnZeroPageCount;if(0===this.props.pageCount&&void 0!==e)return e?e(this.props):e;var t=this.props,a=t.disabledClassName,r=t.disabledLinkClassName,o=t.pageCount,_=t.className,n=t.containerClassName,i=t.previousLabel,s=t.previousClassName,l=t.previousLinkClassName,p=t.previousAriaLabel,c=t.prevRel,d=t.nextLabel,u=t.nextClassName,f=t.nextLinkClassName,g=t.nextAriaLabel,P=t.nextRel,E=this.state.selected,b=0===E,y=E===o-1,v="".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(s)).concat(b?" ".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(a)):""),C="".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(u)).concat(y?" ".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(a)):""),O="".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(l)).concat(b?" ".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(r)):""),m="".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(f)).concat(y?" ".concat((0,_utils__WEBPACK_IMPORTED_MODULE_4__.m)(r)):""),L=b?"true":"false",h=y?"true":"false";return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul",{className:_||n},react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li",{className:v},react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a",_extends({className:O,href:this.getElementHref(E-1),tabIndex:b?"-1":"0",role:"button",onKeyPress:this.handlePreviousPage,"aria-disabled":L,"aria-label":p,rel:c},this.getEventListener(this.handlePreviousPage)),i)),this.pagination(),react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li",{className:C},react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a",_extends({className:m,href:this.getElementHref(E+1),tabIndex:y?"-1":"0",role:"button",onKeyPress:this.handleNextPage,"aria-disabled":h,"aria-label":g,rel:P},this.getEventListener(this.handleNextPage)),d)))}},{key:"__reactstandin__regenerateByEval",value:function __reactstandin__regenerateByEval(key,code){this[key]=eval(code)}}]),PaginationBoxView}(react__WEBPACK_IMPORTED_MODULE_0__.Component),reactHotLoader,leaveModule;_defineProperty(PaginationBoxView,"propTypes",{pageCount:prop_types__WEBPACK_IMPORTED_MODULE_1___default().number.isRequired,pageRangeDisplayed:prop_types__WEBPACK_IMPORTED_MODULE_1___default().number,marginPagesDisplayed:prop_types__WEBPACK_IMPORTED_MODULE_1___default().number,previousLabel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().node,previousAriaLabel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,prevPageRel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,prevRel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,nextLabel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().node,nextAriaLabel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,nextPageRel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,nextRel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,breakLabel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,prop_types__WEBPACK_IMPORTED_MODULE_1___default().node]),hrefBuilder:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,hrefAllControls:prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool,onPageChange:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,onPageActive:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,onClick:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,initialPage:prop_types__WEBPACK_IMPORTED_MODULE_1___default().number,forcePage:prop_types__WEBPACK_IMPORTED_MODULE_1___default().number,disableInitialCallback:prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool,containerClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,className:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,pageClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,pageLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,pageLabelBuilder:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,activeClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,activeLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,previousClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,nextClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,previousLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,nextLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,disabledClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,disabledLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,breakClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,breakLinkClassName:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,extraAriaContext:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,ariaLabelBuilder:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,eventListener:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string,renderOnZeroPageCount:prop_types__WEBPACK_IMPORTED_MODULE_1___default().func,selectedPageRel:prop_types__WEBPACK_IMPORTED_MODULE_1___default().string}),_defineProperty(PaginationBoxView,"defaultProps",{pageRangeDisplayed:2,marginPagesDisplayed:3,activeClassName:"selected",previousLabel:"Previous",previousClassName:"previous",previousAriaLabel:"Previous page",prevPageRel:"prev",prevRel:"prev",nextLabel:"Next",nextClassName:"next",nextAriaLabel:"Next page",nextPageRel:"next",nextRel:"next",breakLabel:"...",disabledClassName:"disabled",disableInitialCallback:!1,pageLabelBuilder:function(e){return e},eventListener:"onClick",renderOnZeroPageCount:void 0,selectedPageRel:"canonical",hrefAllControls:!1}),reactHotLoader="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default:void 0,reactHotLoader&&reactHotLoader.register(PaginationBoxView,"PaginationBoxView","/home/yoan/work/oss/react-paginate/react_components/PaginationBoxView.js"),leaveModule="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.leaveModule:void 0,leaveModule&&leaveModule(module)},351:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>n});var r,o=a(214);e=a.hmd(e),(r="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.enterModule:void 0)&&r(e),"undefined"!=typeof reactHotLoaderGlobal&&reactHotLoaderGlobal.default.signature;var _=o.Z;const n=_;var i,s;(i="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default:void 0)&&i.register(_,"default","/home/yoan/work/oss/react-paginate/react_components/index.js"),(s="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.leaveModule:void 0)&&s(e)},923:(e,t,a)=>{"use strict";var r,o,_;function n(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";return null!=e?e:t}a.d(t,{m:()=>n}),e=a.hmd(e),(r="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.enterModule:void 0)&&r(e),"undefined"!=typeof reactHotLoaderGlobal&&reactHotLoaderGlobal.default.signature,(o="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.default:void 0)&&o.register(n,"classNameIfDefined","/home/yoan/work/oss/react-paginate/react_components/utils.js"),(_="undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal.leaveModule:void 0)&&_(e)},703:(e,t,a)=>{"use strict";var r=a(414);function o(){}function _(){}_.resetWarningCache=o,e.exports=function(){function e(e,t,a,o,_,n){if(n!==r){var i=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw i.name="Invariant Violation",i}}function t(){return e}e.isRequired=e;var a={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:_,resetWarningCache:o};return a.PropTypes=a,a}},697:(e,t,a)=>{e.exports=a(703)()},414:e=>{"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},98:e=>{"use strict";e.exports=__WEBPACK_EXTERNAL_MODULE__98__}},__webpack_module_cache__={};function __nested_webpack_require_21573__(e){var t=__webpack_module_cache__[e];if(void 0!==t)return t.exports;var a=__webpack_module_cache__[e]={id:e,loaded:!1,exports:{}};return __webpack_modules__[e](a,a.exports,__nested_webpack_require_21573__),a.loaded=!0,a.exports}__nested_webpack_require_21573__.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return __nested_webpack_require_21573__.d(t,{a:t}),t},__nested_webpack_require_21573__.d=(e,t)=>{for(var a in t)__nested_webpack_require_21573__.o(t,a)&&!__nested_webpack_require_21573__.o(e,a)&&Object.defineProperty(e,a,{enumerable:!0,get:t[a]})},__nested_webpack_require_21573__.hmd=e=>((e=Object.create(e)).children||(e.children=[]),Object.defineProperty(e,"exports",{enumerable:!0,set:()=>{throw new Error("ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: "+e.id)}}),e),__nested_webpack_require_21573__.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),__nested_webpack_require_21573__.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var __webpack_exports__=__nested_webpack_require_21573__(351);return __webpack_exports__})()}));
+//# sourceMappingURL=react-paginate.js.map
 
 /***/ }),
 
@@ -86283,6 +88094,293 @@ if (false) {} else {
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tslib/tslib.es6.js":
+/*!*****************************************!*\
+  !*** ./node_modules/tslib/tslib.es6.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__assign": () => (/* binding */ __assign),
+/* harmony export */   "__asyncDelegator": () => (/* binding */ __asyncDelegator),
+/* harmony export */   "__asyncGenerator": () => (/* binding */ __asyncGenerator),
+/* harmony export */   "__asyncValues": () => (/* binding */ __asyncValues),
+/* harmony export */   "__await": () => (/* binding */ __await),
+/* harmony export */   "__awaiter": () => (/* binding */ __awaiter),
+/* harmony export */   "__classPrivateFieldGet": () => (/* binding */ __classPrivateFieldGet),
+/* harmony export */   "__classPrivateFieldIn": () => (/* binding */ __classPrivateFieldIn),
+/* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet),
+/* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
+/* harmony export */   "__decorate": () => (/* binding */ __decorate),
+/* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
+/* harmony export */   "__extends": () => (/* binding */ __extends),
+/* harmony export */   "__generator": () => (/* binding */ __generator),
+/* harmony export */   "__importDefault": () => (/* binding */ __importDefault),
+/* harmony export */   "__importStar": () => (/* binding */ __importStar),
+/* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
+/* harmony export */   "__metadata": () => (/* binding */ __metadata),
+/* harmony export */   "__param": () => (/* binding */ __param),
+/* harmony export */   "__read": () => (/* binding */ __read),
+/* harmony export */   "__rest": () => (/* binding */ __rest),
+/* harmony export */   "__spread": () => (/* binding */ __spread),
+/* harmony export */   "__spreadArray": () => (/* binding */ __spreadArray),
+/* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
+/* harmony export */   "__values": () => (/* binding */ __values)
+/* harmony export */ });
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+var __createBinding = Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+
+function __exportStar(m, o) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+/** @deprecated */
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+/** @deprecated */
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var __setModuleDefault = Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+}
+
+function __classPrivateFieldIn(state, receiver) {
+    if (receiver === null || (typeof receiver !== "object" && typeof receiver !== "function")) throw new TypeError("Cannot use 'in' operator on non-object");
+    return typeof state === "function" ? receiver === state : state.has(receiver);
 }
 
 

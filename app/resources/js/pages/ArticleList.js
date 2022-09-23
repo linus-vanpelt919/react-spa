@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ReactPaginate from 'react-paginate';
 
 function Article() {
     const [diary, setDiary] = useState([]);
@@ -18,6 +19,7 @@ function Article() {
     useEffect(() => {
         getDiaryData();
     }, []);
+
     return (
         <>
             <div className="px-8 mx-auto mt-32 max-w-5xl mb-32">

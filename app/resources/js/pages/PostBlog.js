@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { useDropzone } from "react-dropzone";
 
 function PostBlog() {
     const [file, setFile] = useState("");
@@ -9,25 +10,26 @@ function PostBlog() {
         register,
         handleSubmit,
         formState: { errors },
-        reset
+        reset,
     } = useForm({
         mode: "onBlur", //入力を外すとエラーになる
         reValidateMode: "onSubmit", //二回目のバリデーションのタイミング
         criteriaMode: "all", //すべてのエラーを出す初期値はfirstError
     });
     // const { filename } = register("filename");
-    const inputRef = useRef(null);
+    // const inputRef = useRef(null);
     //画像プレビュ機能
-    const handleFile = (e) => {
-        const fileName = e.target.files[0];
-        const fileReader = new FileReader();
-        fileReader.onload = function () {
-            setFile(fileReader.result);
-        };
-        fileReader.readAsDataURL(fileName);
-        const file = inputRef.current.files[0];
-        setUploadFile(inputRef.current.files[0]);
-    };
+    // const handleFile = (e) => {
+    //     const fileName = e.target.files[0];
+    //     const fileReader = new FileReader();
+    //     fileReader.onload = function () {
+    //         setFile(fileReader.result);
+    //     };
+    //     fileReader.readAsDataURL(fileName);
+    //     const file = inputRef.current.files[0];
+    //     setUploadFile(inputRef.current.files[0]);
+    // };
+
     const onSubmit = async (data) => {
         //https://chaika.hatenablog.com/entry/2020/08/07/160000
         const { title, contents } = data;
@@ -44,7 +46,8 @@ function PostBlog() {
                 },
             })
             .then((res) => {
-                setFile("");
+                // setFile("");
+                setFiles([]);
                 reset();
                 //フラッシュメッセージ表示
             })
@@ -53,6 +56,42 @@ function PostBlog() {
                 console.log(error);
             });
     };
+
+    //ドラドロ
+    const [files, setFiles] = useState([]);
+    const { getRootProps, getInputProps } = useDropzone({
+        accept: {
+            "image/*": [],
+        },
+        onDrop: (acceptedFiles) => {
+            setFiles(
+                acceptedFiles.map((file) =>
+                    Object.assign(file, {
+                        preview: URL.createObjectURL(file),
+                    })
+                )
+            );
+        setUploadFile(acceptedFiles[0]);
+        },
+    });
+    const thumbs = files.map((file) => (
+        <div key={file.name}>
+            <div>
+                <img
+                    src={file.preview}
+                    // Revoke data uri after image is loaded
+                    onLoad={() => {
+                        URL.revokeObjectURL(file.preview);
+                    }}
+                />
+            </div>
+        </div>
+    ));
+    useEffect(() => {
+        // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+        return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    }, []);
+
     return (
         <div className="max-w-2xl mx-auto mt-40 mb-40">
             <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">
@@ -100,7 +139,7 @@ function PostBlog() {
                         rows="10"
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="今日あったこと..."
-                        {...register("contents",{
+                        {...register("contents", {
                             required: {
                                 value: true,
                                 message: "入力が必須の項目です。",
@@ -108,7 +147,7 @@ function PostBlog() {
                             maxLength: {
                                 value: 500,
                                 message: "５００文字以内で入力してください",
-                            }
+                            },
                         })}
                     ></textarea>
                     {errors.contents?.message && (
@@ -118,7 +157,7 @@ function PostBlog() {
                     )}
                 </div>
                 <div className="mb-6">
-                    <div className="flex justify-center items-center w-80 mx-auto">
+                    <div className="flex justify-center items-center w-80 mx-auto relative">
                         <label
                             htmlFor="dropzone-file"
                             className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -149,7 +188,7 @@ function PostBlog() {
                                     SVG, PNG, JPG or GIF (MAX. 800x400px)
                                 </p>
                             </div>
-                            <input
+                            {/* <input
                                 id="dropzone-file"
                                 type="file"
                                 ref={inputRef}
@@ -157,16 +196,21 @@ function PostBlog() {
                                 accept="image/*"
                                 onChange={handleFile}
                                 // name={filename}
-                            />
+                            /> */}
+                            <div {...getRootProps({ className: "dropzone absolute top-0 left-0 w-full h-full opacity-0 pointer" })}>
+                                <input {...getInputProps()} />
+                            </div>
                         </label>
+
                     </div>
                     <div>
-                        {file && (
+                        {files && (
                             <div className="mx-auto w-80 mt-2">
-                                <img
+                                <aside>{thumbs}</aside>
+                                {/* <img
                                     className="w-full h-full object-contain"
                                     src={file}
-                                />
+                                /> */}
                             </div>
                         )}
                     </div>
