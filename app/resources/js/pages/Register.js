@@ -28,6 +28,9 @@ function Register() {
 
     return (
         <div className="max-w-2xl mx-auto mt-40 mb-40">
+            <h1 className="text-center text-4xl font-mono text-gray-900 dark:text-gray-400">
+                会員登録
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-6">
                     <label
@@ -49,7 +52,7 @@ function Register() {
                               },
                               maxLength: {
                                 value: 20,
-                                message: "20文字以上入力してください。",
+                                message: "20文字以内で入力してください。",
                             },
                         })}
                     />
